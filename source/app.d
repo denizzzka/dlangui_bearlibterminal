@@ -105,11 +105,12 @@ class BearLibPlatform : Platform
 
     dstring getClipboardText(bool mouseBuffer)
     {
-        return "text from clipboard";
+        assert(false, "Isn't implemented");
     }
 
     void setClipboardText(dstring text, bool mouseBuffer)
     {
+        assert(false, "Isn't implemented");
     }
 
     void requestLayout()
@@ -145,6 +146,15 @@ class BearLibWindow : Window
             firstCall = false;
 
             invalidate();
+        }
+
+        {
+            import dlangui.widgets.widget;
+
+            if(_mainWidget !is null)
+            {
+                Log.d("_mainWidget available");
+            }
         }
     }
 
