@@ -138,11 +138,11 @@ class BearLibWindow : Window
 
     void show()
     {
-        static bool firstRun = true;
+        static bool firstCall = true;
 
-        if(firstRun)
+        if(firstCall)
         {
-            firstRun = false;
+            firstCall = false;
 
             invalidate();
         }
