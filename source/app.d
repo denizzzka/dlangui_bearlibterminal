@@ -115,7 +115,8 @@ class BearLibPlatform : Platform
 
     void requestLayout()
     {
-        window.requestLayout();
+        if(window !is null)
+            window.requestLayout();
     }
 }
 
@@ -169,7 +170,7 @@ class BearLibWindow : Window
         BT.terminal.setf("window.title=%s", caption);
     }
 
-    void windowIcon(Ref!(DrawBuf) icon) @property
+    void windowIcon(DrawBufRef icon) @property
     {
         assert(false, "Isn't implemented");
     }
