@@ -1,4 +1,4 @@
-module dlangui_bearlibterminal.font_manager;
+module dlangui_bearlibterminal.fonts;
 
 import dlangui;
 

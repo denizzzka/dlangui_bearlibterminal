@@ -1,6 +1,6 @@
 static import BT = BearLibTerminal;
 import dlangui;
-import dlangui_bearlibterminal.font_manager;
+import dlangui_bearlibterminal.fonts;
 
 mixin APP_ENTRY_POINT;
 
