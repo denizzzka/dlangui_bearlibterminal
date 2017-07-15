@@ -132,6 +132,11 @@ class BearLibWindow : Window
         close();
     }
 
+    void draw()
+    {
+        //~ mainWidget.draw();
+    }
+
     override:
 
     void close()
@@ -156,6 +161,8 @@ class BearLibWindow : Window
             if(mainWidget !is null)
             {
                 Log.d("_mainWidget available");
+
+                draw();
             }
         }
     }
