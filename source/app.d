@@ -55,7 +55,7 @@ class BearLibPlatform : Platform
     {
         assert(window is null);
 
-        window = new BearLibWindow;
+        window = new BearLibWindow(windowCaption.to!string);
 
         return window;
     }
@@ -119,9 +119,9 @@ class BearLibPlatform : Platform
 
 class BearLibWindow : Window
 {
-    this()
+    this(string title)
     {
-        BT.terminal.open();
+        BT.terminal.open(title);
     }
 
     ~this()
@@ -148,6 +148,7 @@ class BearLibWindow : Window
 
     void windowCaption(dstring caption) @property
     {
+        BT.terminal.setf("window.title=%s", caption);
     }
 
     void windowIcon(Ref!(DrawBuf) icon) @property
