@@ -126,6 +126,8 @@ class BearLibWindow : Window
     this(dstring caption)
     {
         BT.terminal.open(caption.to!string);
+
+        updateWindowSize();
     }
 
     ~this()
@@ -133,8 +135,19 @@ class BearLibWindow : Window
         close();
     }
 
-    void draw()
+    private void updateWindowSize()
     {
+        with(BT.terminal.keycode)
+        {
+            _dx = BT.terminal.check(cell_width);
+            _dy = BT.terminal.check(cell_height);
+        }
+    }
+
+    private void draw()
+    {
+        //~ BT.terminal.clear();
+
         BearLibDrawBuf buf = new BearLibDrawBuf(2000, 2000); //FIXME
 
         void recursive(Widget widget)
@@ -177,6 +190,8 @@ class BearLibWindow : Window
 
                 draw();
             }
+
+            BT.terminal.refresh();
         }
     }
 
