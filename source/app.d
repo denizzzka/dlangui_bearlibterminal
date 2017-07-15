@@ -137,10 +137,10 @@ class BearLibWindow : Window
 
     private void updateWindowSize()
     {
-        with(BT.terminal.keycode)
+        with(BT.terminal)
         {
-            _dx = BT.terminal.check(cell_width);
-            _dy = BT.terminal.check(cell_height);
+            _dx = BT.terminal.check(keycode.width);
+            _dy = BT.terminal.check(keycode.height);
         }
     }
 
