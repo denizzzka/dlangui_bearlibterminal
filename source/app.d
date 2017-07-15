@@ -119,12 +119,8 @@ class BearLibPlatform : Platform
 
 class BearLibWindow : Window
 {
-    private dstring _windowCaption;
-
     this(dstring caption)
     {
-        _windowCaption = caption;
-
         BT.terminal.open(caption.to!string);
     }
 
@@ -154,13 +150,11 @@ class BearLibWindow : Window
 
     dstring windowCaption() @property
     {
-        return _windowCaption;
+        return BT.terminal.get("window.title", "default_value").to!dstring;
     }
 
     void windowCaption(dstring caption) @property
     {
-        _windowCaption = caption;
-
         BT.terminal.setf("window.title=%s", caption);
     }
 
