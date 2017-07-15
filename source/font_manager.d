@@ -62,4 +62,9 @@ class BearLibFont : Font
     {
         return &_glyph;
     }
+
+    void drawText(DrawBuf drawBuf, int x, int y, const dchar[] text, uint color, int tabSize, int tabOffset, uint textFlags)
+    {
+        Log.d("drawText="~text.to!string);
+    }
 }
