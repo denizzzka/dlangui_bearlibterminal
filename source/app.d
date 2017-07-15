@@ -1,5 +1,6 @@
 static import BT = BearLibTerminal;
 import dlangui;
+import dlangui_bearlibterminal.font_manager;
 
 mixin APP_ENTRY_POINT;
 
@@ -7,7 +8,7 @@ extern(C) int DLANGUImain(string[] args) {
     initLogs();
     SCREEN_DPI = 10; // TODO: wtf?
     Platform.setInstance(new BearLibPlatform());
-    //~ FontManager.instance = new ConsoleFontManager();
+    FontManager.instance = new BearLibFontManager();
     initResourceManagers();
 
     version (Windows)
@@ -134,7 +135,19 @@ class BearLibWindow : Window
 
     void draw()
     {
-        //~ mainWidget.draw();
+        BearLibDrawBuf buf = new BearLibDrawBuf(2000, 2000); //FIXME
+
+        void recursive(Widget widget)
+        {
+            foreach(i; 0 .. widget.childCount)
+                recursive(widget.child(i));
+
+            widget.onDraw(buf);
+        }
+
+        recursive(mainWidget);
+
+        destroy(buf);
     }
 
     override:
@@ -189,6 +202,14 @@ class BearLibWindow : Window
 
     void requestLayout()
     {
+    }
+}
+
+class BearLibDrawBuf : ColorDrawBuf
+{
+    this(int width, int height)
+    {
+        super(width, height);
     }
 }
 
