@@ -47,72 +47,82 @@ import dlangui.platforms.common.platform;
 
 class BearLibPlatform : Platform
 {
-	override:
+    override:
 
-	BearLibWindow createWindow(dstring windowCaption, Window parent, uint flags, uint width, uint height)
-	{
-		return new BearLibWindow;
-	}
+    BearLibWindow createWindow(dstring windowCaption, Window parent, uint flags, uint width, uint height)
+    {
+        return new BearLibWindow;
+    }
 
-	void closeWindow(Window w)
-	{
-		w.close();
-	}
+    void closeWindow(Window w)
+    {
+        w.close();
+    }
 
-	int enterMessageLoop()
-	{
-		return -1;
-	}
+    int enterMessageLoop()
+    {
+        return -1;
+    }
 
-	dstring getClipboardText(bool mouseBuffer = false)
-	{
-		return "text from clipboard";
-	}
+    dstring getClipboardText(bool mouseBuffer = false)
+    {
+        return "text from clipboard";
+    }
 
-	void setClipboardText(dstring text, bool mouseBuffer = false)
-	{
-	}
+    void setClipboardText(dstring text, bool mouseBuffer = false)
+    {
+    }
 
-	void requestLayout()
-	{
-	}
+    void requestLayout()
+    {
+    }
 }
 
 class BearLibWindow : Window
 {
-	this()
-	{
-		BT.terminal.open();
-	}
+    debug private bool windowDisplayed;
 
-	override:
+    this()
+    {
+        assert(!windowDisplayed);
 
-	void close()
-	{
-		BT.terminal.close();
-	}
+        BT.terminal.open();
 
-	void show()
-	{
-		BT.terminal.refresh();
-	}
+        debug windowDisplayed = true;
+    }
 
-	dstring windowCaption() @property
-	{
-		return "this is window caption";
-	}
+    override:
 
-	void windowCaption(dstring caption) @property
-	{
-	}
+    void close()
+    {
+        assert(!windowDisplayed);
 
-	void windowIcon(Ref!(DrawBuf) icon) @property
-	{
-	}
+        BT.terminal.close();
 
-	void invalidate()
-	{
-	}
+        debug windowDisplayed = false;
+    }
+
+    void show()
+    {
+        BT.terminal.refresh();
+    }
+
+    dstring windowCaption() @property
+    {
+        return "this is window caption";
+    }
+
+    void windowCaption(dstring caption) @property
+    {
+    }
+
+    void windowIcon(Ref!(DrawBuf) icon) @property
+    {
+    }
+
+    void invalidate()
+    {
+    }
 }
 
 /// entry point for dlangui based application
