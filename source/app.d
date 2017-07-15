@@ -115,6 +115,7 @@ class BearLibPlatform : Platform
 
     void requestLayout()
     {
+        window.requestLayout();
     }
 }
 
@@ -151,7 +152,7 @@ class BearLibWindow : Window
         {
             import dlangui.widgets.widget;
 
-            if(_mainWidget !is null)
+            if(mainWidget !is null)
             {
                 Log.d("_mainWidget available");
             }
@@ -176,6 +177,10 @@ class BearLibWindow : Window
     void invalidate()
     {
         BT.terminal.refresh();
+    }
+
+    void requestLayout()
+    {
     }
 }
 
