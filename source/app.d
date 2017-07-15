@@ -47,29 +47,67 @@ import dlangui.platforms.common.platform;
 
 class BearLibPlatform : Platform
 {
+    private BearLibWindow window;
+
     override:
 
     BearLibWindow createWindow(dstring windowCaption, Window parent, uint flags, uint width, uint height)
     {
-        return new BearLibWindow;
+        assert(window is null);
+
+        window = new BearLibWindow;
+
+        return window;
     }
 
     void closeWindow(Window w)
     {
+        assert(window !is null);
         w.close();
+        window = null;
     }
 
+    /**
+    * Starts application message loop.
+    *
+    * When returned from this method, application is shutting down.
+    */
     int enterMessageLoop()
     {
-        return -1;
+        do
+        {
+            if(BT.terminal.has_input)
+            {
+                const event = BT.terminal.read();
+
+                Log.d("MessageLoop event = "~event.to!string);
+
+                with(BT.terminal)
+                switch(event)
+                {
+                    case keycode.close:
+                        destroy(window);
+                        Log.d("return 0");
+                        return 0;
+
+                    case keycode.resized:
+                        Log.d("resize is unsupported");
+                        return 1;
+
+                    default:
+                        break;
+                }
+            }
+        }
+        while(true);
     }
 
-    dstring getClipboardText(bool mouseBuffer = false)
+    dstring getClipboardText(bool mouseBuffer)
     {
         return "text from clipboard";
     }
 
-    void setClipboardText(dstring text, bool mouseBuffer = false)
+    void setClipboardText(dstring text, bool mouseBuffer)
     {
     }
 
@@ -80,26 +118,21 @@ class BearLibPlatform : Platform
 
 class BearLibWindow : Window
 {
-    debug private bool windowDisplayed;
-
     this()
     {
-        assert(!windowDisplayed);
-
         BT.terminal.open();
+    }
 
-        debug windowDisplayed = true;
+    ~this()
+    {
+        close();
     }
 
     override:
 
     void close()
     {
-        assert(!windowDisplayed);
-
         BT.terminal.close();
-
-        debug windowDisplayed = false;
     }
 
     void show()
