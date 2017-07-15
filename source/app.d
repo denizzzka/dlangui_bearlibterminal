@@ -55,7 +55,7 @@ class BearLibPlatform : Platform
     {
         assert(window is null);
 
-        window = new BearLibWindow(windowCaption.to!string);
+        window = new BearLibWindow(windowCaption);
 
         return window;
     }
@@ -121,9 +121,11 @@ class BearLibWindow : Window
 {
     private dstring _windowCaption;
 
-    this(string title)
+    this(dstring caption)
     {
-        BT.terminal.open(title);
+        _windowCaption = caption;
+
+        BT.terminal.open(caption.to!string);
     }
 
     ~this()
@@ -140,7 +142,14 @@ class BearLibWindow : Window
 
     void show()
     {
-        BT.terminal.refresh();
+        static bool firstRun = true;
+
+        if(firstRun)
+        {
+            firstRun = false;
+
+            invalidate();
+        }
     }
 
     dstring windowCaption() @property
@@ -157,10 +166,12 @@ class BearLibWindow : Window
 
     void windowIcon(Ref!(DrawBuf) icon) @property
     {
+        assert(false, "Isn't implemented");
     }
 
     void invalidate()
     {
+        BT.terminal.refresh();
     }
 }
 
