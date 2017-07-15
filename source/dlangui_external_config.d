@@ -1,11 +1,6 @@
-version = NO_OPENGL;
-version = NO_FREETYPE;
-enum ENABLE_OPENGL = false;
-enum ENABLE_FREETYPE = false;
-enum BACKEND_CONSOLE = false;
 enum BACKEND_GUI = false;
+enum BACKEND_CONSOLE = false;
 enum BACKEND_SDL = false;
 enum BACKEND_X11 = false;
 enum BACKEND_DSFML = false;
 enum BACKEND_WIN32 = false;
-enum BACKEND_ANDROID = false;
