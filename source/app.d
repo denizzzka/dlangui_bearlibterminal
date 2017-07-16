@@ -148,7 +148,7 @@ class BearLibWindow : Window
     {
         //~ BT.terminal.clear();
 
-        BearLibDrawBuf buf = new BearLibDrawBuf(_dx, _dy);
+        BearLibDrawBuf buf = new BearLibDrawBuf(this);
 
         void recursive(Widget widget)
         {
@@ -222,9 +222,14 @@ class BearLibWindow : Window
 
 class BearLibDrawBuf : ColorDrawBuf
 {
-    this(int width, int height)
+    // Since only one window is allowed with BearLib terminal
+    private BearLibWindow window;
+
+    this(BearLibWindow w)
     {
-        super(width, height);
+        window = w;
+
+        super(w.width, w.height);
     }
 }
 
