@@ -156,10 +156,10 @@ class BearLibWindow : Window
 
         void recursive(Widget widget)
         {
+            widget.onDraw(buf);
+
             foreach(i; 0 .. widget.childCount)
                 recursive(widget.child(i));
-
-            widget.onDraw(buf);
         }
 
         recursive(mainWidget);
