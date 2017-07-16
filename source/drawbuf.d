@@ -1,17 +1,17 @@
 module dlangui_bearlibterminal.drawbuf;
 
 static import BT = BearLibTerminal;
-import dlangui_bearlibterminal.app;
 import dlangui;
 
 class BearLibDrawBuf : DrawBuf
 {
-    // Since only one window is allowed with BearLib terminal
-    private BearLibWindow window;
+    private int _width;
+    private int _height;
 
-    this(BearLibWindow w)
+    this(int w, int h)
     {
-        window = w;
+        _width = w;
+        _height = h;
     }
 
     void printText(int x, int y, string text)
@@ -23,8 +23,8 @@ class BearLibDrawBuf : DrawBuf
 
     override:
 
-    @property int width() { return window.width; }
-    @property int height() { return window.height; }
+    @property int width() { return _width; }
+    @property int height() { return _height; }
 
     void resize(int _width, int _height)
     {

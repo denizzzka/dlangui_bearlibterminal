@@ -156,7 +156,7 @@ class BearLibWindow : Window
 
         //~ BT.terminal.clear();
 
-        BearLibDrawBuf buf = new BearLibDrawBuf(this);
+        BearLibDrawBuf buf = new BearLibDrawBuf(width, height);
 
         onDraw(buf);
 
@@ -233,6 +233,8 @@ extern (C) int UIAppMain(string[] args)
     window.mainWidget.addChild = new TextWidget(null, "Second"d);
 
     //~ l.addChild = (new Button).text("Some button"d).margins(1);
+
+    window.mainWidget.measure(SIZE_UNSPECIFIED, SIZE_UNSPECIFIED);
 
     window.requestLayout();
 
