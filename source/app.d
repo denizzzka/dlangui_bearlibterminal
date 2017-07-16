@@ -127,9 +127,11 @@ class BearLibWindow : Window
 {
     this(dstring caption)
     {
+        super();
+
         BT.terminal.open(caption.to!string);
 
-        updateWindowSize();
+        updateDlanguiWindowSize();
     }
 
     ~this()
@@ -137,12 +139,14 @@ class BearLibWindow : Window
         close();
     }
 
-    private void updateWindowSize()
+    private void updateDlanguiWindowSize()
     {
         with(BT.terminal)
         {
-            _dx = BT.terminal.state(keycode.width);
-            _dy = BT.terminal.state(keycode.height);
+            onResize(
+                BT.terminal.state(keycode.width),
+                BT.terminal.state(keycode.height)
+            );
         }
     }
 
@@ -226,18 +230,25 @@ extern (C) int UIAppMain(string[] args)
     someText.textColor(0xFF0000); // red text
 
     window.mainWidget.addChild = someText;
-
-    window.mainWidget.addChild = new TextWidget(null, "Second"d).margins(1);
+    window.mainWidget.addChild = new TextWidget(null, "Second"d);
 
     //~ l.addChild = (new Button).text("Some button"d).margins(1);
 
     window.requestLayout();
 
-    // show window
     window.show();
 
-    Log.d(someText.width);
-    Log.d(someText.height);
+    Log.d(window.width);
+    Log.d(window.height);
+
+    Log.d(window.mainWidget.measuredWidth);
+    Log.d(window.mainWidget.measuredHeight);
+
+    Log.d(window.mainWidget.width);
+    Log.d(window.mainWidget.height);
+
+    Log.d(window.mainWidget.left);
+    Log.d(window.mainWidget.top);
 
     // run message loop
     return Platform.instance.enterMessageLoop();
