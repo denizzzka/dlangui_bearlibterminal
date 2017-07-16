@@ -75,6 +75,7 @@ class BearLibFont : Font
         buf.printText(x, y, text.to!string);
     }
 
+    // TODO: need to rewrite
     int measureText(const dchar[] text, ref int[] widths, int maxWidth, int tabSize, int tabOffset, uint textFlags)
     {
         int len = BT.terminal.measure(text.to!string).width;
