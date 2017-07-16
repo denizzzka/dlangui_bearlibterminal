@@ -118,8 +118,8 @@ class BearLibPlatform : Platform
 
     void requestLayout()
     {
-        if(window !is null)
-            window.requestLayout();
+        //~ if(window !is null)
+            //~ window.requestLayout();
     }
 }
 
@@ -210,10 +210,6 @@ class BearLibWindow : Window
     {
         BT.terminal.refresh();
     }
-
-    void requestLayout()
-    {
-    }
 }
 
 /// entry point for dlangui based application
@@ -222,11 +218,15 @@ extern (C) int UIAppMain(string[] args)
     // create window
     Window window = Platform.instance.createWindow("My Window", null);
 
-    window.mainWidget = new HorizontalLayout();
+    auto l = new VerticalLayout();
+    l.margins(3);
+    l.padding(3);
 
     // create some widget to show in window
-    window.mainWidget.addChild = (new TextWidget).text("Hello world"d).textColor(0xFF0000); // red text
-    window.mainWidget.addChild = (new TextWidget).text("Second");
+    l.addChild = new TextWidget(null, "Hello world"d).margins(2).textColor(0xFF0000); // red text
+    l.addChild = new TextWidget(null, "Second"d).margins(2);
+
+    window.mainWidget = l;
 
     // show window
     window.show();
