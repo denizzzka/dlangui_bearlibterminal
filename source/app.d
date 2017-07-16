@@ -154,7 +154,7 @@ class BearLibWindow : Window
 
         BearLibDrawBuf buf = new BearLibDrawBuf(this);
 
-        mainWidget.onDraw(buf);
+        onDraw(buf);
 
         destroy(buf);
     }
@@ -218,20 +218,20 @@ extern (C) int UIAppMain(string[] args)
     // create window
     Window window = Platform.instance.createWindow("My Window", null);
 
-    auto l = new VerticalLayout();
-    l.margins(3);
-    l.padding(3);
+    //~ window.mainWidget = new VerticalLayout();
+    window.mainWidget = new HorizontalLayout();
 
     // create some widget to show in window
-    auto someText = new TextWidget(null, "Hello world"d).margins(2).textColor(0xFF0000); // red text
+    auto someText = new TextWidget(null, "Hello world"d);
+    someText.textColor(0xFF0000); // red text
 
-    l.addChild = someText;
-    l.addChild = new TextWidget(null, "Second"d).margins(2);
-    l.addChild = (new Button).text("Some button"d).margins(2);
+    window.mainWidget.addChild = someText;
 
-    window.mainWidget = l;
+    window.mainWidget.addChild = new TextWidget(null, "Second"d).margins(1);
 
-    window.mainWidget.requestLayout();
+    //~ l.addChild = (new Button).text("Some button"d).margins(1);
+
+    window.requestLayout();
 
     // show window
     window.show();
