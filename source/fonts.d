@@ -82,11 +82,10 @@ class BearLibFont : Font
         if(len > maxWidth)
             len = maxWidth;
 
-        if (widths.length <= len)
-            widths.length = len + 1;
+        widths.length = len;
 
-        foreach(ref item; widths)
-            item = 1;
+        foreach(ref w; widths)
+            w = 1;
 
         Log.d(__FUNCTION__~" len="~len.to!string~" widths="~widths.to!string);
 
