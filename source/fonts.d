@@ -73,8 +73,6 @@ class BearLibFont : Font
 
     int measureText(const dchar[] text, ref int[] widths, int maxWidth, int tabSize, int tabOffset, uint textFlags)
     {
-        Log.d(__FUNCTION__);
-
         int w = BT.terminal.measure(text.to!string).width;
 
         if(w > maxWidth)
@@ -82,7 +80,7 @@ class BearLibFont : Font
 
         widths ~= w;
 
-        Log.d("width="~w.to!string);
+        Log.d(__FUNCTION__~"="~w.to!string);
 
         return w;
     }

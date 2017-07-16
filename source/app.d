@@ -139,8 +139,8 @@ class BearLibWindow : Window
     {
         with(BT.terminal)
         {
-            _dx = BT.terminal.check(keycode.width);
-            _dy = BT.terminal.check(keycode.height);
+            _dx = BT.terminal.state(keycode.width);
+            _dy = BT.terminal.state(keycode.height);
         }
     }
 
