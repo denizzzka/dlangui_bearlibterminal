@@ -148,6 +148,9 @@ class BearLibWindow : Window
                 BT.terminal.state(keycode.width),
                 BT.terminal.state(keycode.height)
             );
+
+            //FIXME: why this is need here?
+            updateWindowOrContentSize();
         }
     }
 
@@ -223,8 +226,8 @@ extern (C) int UIAppMain(string[] args)
     // create window
     Window window = Platform.instance.createWindow("My Window", null);
 
-    //~ window.mainWidget = new VerticalLayout();
-    window.mainWidget = new HorizontalLayout();
+    window.mainWidget = new VerticalLayout();
+    //~window.mainWidget = new HorizontalLayout();
 
     // create some widget to show in window
     auto someText = new TextWidget(null, "Hello world"d);
@@ -232,8 +235,7 @@ extern (C) int UIAppMain(string[] args)
 
     window.mainWidget.addChild = someText;
     window.mainWidget.addChild = new TextWidget(null, "Second"d);
-
-    //~ l.addChild = (new Button).text("Some button"d).margins(1);
+    window.mainWidget.addChild = (new Button).text("Some button"d);
 
     //~ window.mainWidget.measure(SIZE_UNSPECIFIED, SIZE_UNSPECIFIED);
 
