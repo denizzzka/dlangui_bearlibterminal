@@ -226,8 +226,8 @@ extern (C) int UIAppMain(string[] args)
     // create window
     Window window = Platform.instance.createWindow("My Window", null);
 
-    window.mainWidget = new VerticalLayout();
-    //~window.mainWidget = new HorizontalLayout();
+    //~ window.mainWidget = new VerticalLayout();
+    window.mainWidget = new HorizontalLayout();
 
     // create some widget to show in window
     auto someText = new TextWidget(null, "Hello world"d);
@@ -235,6 +235,9 @@ extern (C) int UIAppMain(string[] args)
 
     window.mainWidget.addChild = someText;
     window.mainWidget.addChild = new TextWidget(null, "Second"d);
+    window.mainWidget.addChild = new TextWidget(null, "Три"d);
+    window.mainWidget.addChild = new TextWidget(null, "НЕЧТО ДЛИННОЕ ПРЕДЛИННОЕ"d);
+    window.mainWidget.addChild = new TextWidget(null, "Покороче"d);
     window.mainWidget.addChild = (new Button).text("Some button"d);
 
     //~ window.mainWidget.measure(SIZE_UNSPECIFIED, SIZE_UNSPECIFIED);
