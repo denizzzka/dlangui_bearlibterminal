@@ -223,13 +223,21 @@ extern (C) int UIAppMain(string[] args)
     l.padding(3);
 
     // create some widget to show in window
-    l.addChild = new TextWidget(null, "Hello world"d).margins(2).textColor(0xFF0000); // red text
+    auto someText = new TextWidget(null, "Hello world"d).margins(2).textColor(0xFF0000); // red text
+
+    l.addChild = someText;
     l.addChild = new TextWidget(null, "Second"d).margins(2);
+    l.addChild = (new Button).text("Some button"d).margins(2);
 
     window.mainWidget = l;
 
+    window.mainWidget.requestLayout();
+
     // show window
     window.show();
+
+    Log.d(someText.width);
+    Log.d(someText.height);
 
     // run message loop
     return Platform.instance.enterMessageLoop();
