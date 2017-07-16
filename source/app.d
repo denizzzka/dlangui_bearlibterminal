@@ -148,7 +148,7 @@ class BearLibWindow : Window
     {
         //~ BT.terminal.clear();
 
-        BearLibDrawBuf buf = new BearLibDrawBuf(2000, 2000); //FIXME
+        BearLibDrawBuf buf = new BearLibDrawBuf(_dx, _dy);
 
         void recursive(Widget widget)
         {
