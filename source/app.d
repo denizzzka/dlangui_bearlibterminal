@@ -127,11 +127,11 @@ class BearLibWindow : Window
 {
     this(dstring caption)
     {
+        windowOrContentResizeMode = WindowOrContentResizeMode.shrinkWidgets;
         super();
 
         BT.terminal.open(caption.to!string);
 
-        windowOrContentResizeMode = WindowOrContentResizeMode.shrinkWidgets;
         updateDlanguiWindowSize();
     }
 
