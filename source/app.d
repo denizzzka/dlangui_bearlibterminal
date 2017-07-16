@@ -230,8 +230,11 @@ extern (C) int UIAppMain(string[] args)
     // create window
     Window window = Platform.instance.createWindow("My Window", null);
 
+    window.mainWidget = new HorizontalLayout();
+
     // create some widget to show in window
-    window.mainWidget = (new Button()).text("Hello world"d).textColor(0xFF0000); // red text
+    window.mainWidget.addChild = (new Button()).text("Hello world"d).textColor(0xFF0000); // red text
+    window.mainWidget.addChild = (new Button()).text("Second");
 
     // show window
     window.show();
