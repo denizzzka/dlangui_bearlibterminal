@@ -154,15 +154,7 @@ class BearLibWindow : Window
 
         BearLibDrawBuf buf = new BearLibDrawBuf(this);
 
-        void recursive(Widget widget)
-        {
-            widget.onDraw(buf);
-
-            foreach(i; 0 .. widget.childCount)
-                recursive(widget.child(i));
-        }
-
-        recursive(mainWidget);
+        mainWidget.onDraw(buf);
 
         destroy(buf);
     }
