@@ -131,6 +131,7 @@ class BearLibWindow : Window
 
         BT.terminal.open(caption.to!string);
 
+        windowOrContentResizeMode = WindowOrContentResizeMode.shrinkWidgets;
         updateDlanguiWindowSize();
     }
 
