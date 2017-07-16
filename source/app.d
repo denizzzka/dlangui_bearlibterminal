@@ -235,9 +235,9 @@ extern (C) int UIAppMain(string[] args)
 
     //~ l.addChild = (new Button).text("Some button"d).margins(1);
 
-    window.mainWidget.measure(SIZE_UNSPECIFIED, SIZE_UNSPECIFIED);
+    //~ window.mainWidget.measure(SIZE_UNSPECIFIED, SIZE_UNSPECIFIED);
 
-    window.requestLayout();
+    //~ window.requestLayout();
 
     window.show();
 
