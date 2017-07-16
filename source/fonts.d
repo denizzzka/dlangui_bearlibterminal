@@ -76,16 +76,20 @@ class BearLibFont : Font
 
     int measureText(const dchar[] text, ref int[] widths, int maxWidth, int tabSize, int tabOffset, uint textFlags)
     {
-        int w = BT.terminal.measure(text.to!string).width;
+        int len = BT.terminal.measure(text.to!string).width;
 
-        if(w > maxWidth)
-            w = maxWidth;
+        if(len > maxWidth)
+            len = maxWidth;
 
-        widths ~= w;
+        if (widths.length <= len)
+            widths.length = len + 1;
 
-        Log.d(__FUNCTION__~"="~w.to!string);
+        foreach(ref item; widths)
+            item = 1;
 
-        return w;
+        Log.d(__FUNCTION__~" widths="~widths.to!string);
+
+        return len;
     }
 
     Point measureMultilineText(const dchar[] text, int maxLines, int maxWidth, int tabSize, int tabOffset, uint textFlags)
