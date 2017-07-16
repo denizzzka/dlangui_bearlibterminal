@@ -87,4 +87,9 @@ class BearLibFont : Font
 
         return w;
     }
+
+    Point measureMultilineText(const dchar[] text, int maxLines, int maxWidth, int tabSize, int tabOffset, uint textFlags)
+    {
+        assert(false, __FUNCTION__~" isn't implemented");
+    }
 }
