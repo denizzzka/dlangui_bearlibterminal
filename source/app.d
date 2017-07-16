@@ -118,8 +118,8 @@ class BearLibPlatform : Platform
 
     void requestLayout()
     {
-        //~ if(window !is null)
-            //~ window.requestLayout();
+        if(window !is null)
+            window.requestLayout();
     }
 }
 
