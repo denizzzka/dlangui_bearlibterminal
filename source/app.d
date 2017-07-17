@@ -61,55 +61,53 @@ class BearLibPlatform : Platform
         uint dKeyCode;
 
         with(BT.terminal)
+        switch(event)
         {
-            switch(event)
-            {
-                case keycode.left:
-                    dKeyCode = KeyCode.LEFT;
-                    break;
+            case keycode.left:
+                dKeyCode = KeyCode.LEFT;
+                break;
 
-                case keycode.right:
-                    dKeyCode = KeyCode.RIGHT;
-                    break;
+            case keycode.right:
+                dKeyCode = KeyCode.RIGHT;
+                break;
 
-                case keycode.down:
-                    dKeyCode = KeyCode.DOWN;
-                    break;
+            case keycode.down:
+                dKeyCode = KeyCode.DOWN;
+                break;
 
-                case keycode.up:
-                    dKeyCode = KeyCode.UP;
-                    break;
+            case keycode.up:
+                dKeyCode = KeyCode.UP;
+                break;
 
-                case keycode.enter:
-                    dKeyCode = KeyCode.RETURN;
-                    break;
+            case keycode.enter:
+                dKeyCode = KeyCode.RETURN;
+                break;
 
-                case keycode.tab:
-                    dKeyCode = KeyCode.TAB;
-                    break;
+            case keycode.tab:
+                dKeyCode = KeyCode.TAB;
+                break;
 
-                case keycode.space:
-                    dKeyCode = KeyCode.SPACE;
-                    break;
+            case keycode.space:
+                dKeyCode = KeyCode.SPACE;
+                break;
 
-                case keycode.K_0:
-                    dKeyCode = KeyCode.KEY_0;
-                    break;
+            case keycode.K_0:
+                dKeyCode = KeyCode.KEY_0;
+                break;
 
-                default:
-                    int keytable_diff;
+            default:
+                int keytable_diff;
 
-                    if(event >= keycode.a && event <= keycode.z) // letters
-                        keytable_diff = KeyCode.KEY_A - keycode.a;
-                    else if(event >= keycode.K_1 && event <= keycode.K_9) // numbers
-                        keytable_diff = KeyCode.KEY_1 - keycode.K_1;
-                    else
-                        return;
+                if(event >= keycode.a && event <= keycode.z) // letters
+                    keytable_diff = KeyCode.KEY_A - keycode.a;
+                else if(event >= keycode.K_1 && event <= keycode.K_9) // numbers
+                    keytable_diff = KeyCode.KEY_1 - keycode.K_1;
+                else
+                    return;
 
-                    dKeyCode = event + keytable_diff;
+                dKeyCode = event + keytable_diff;
 
-                    break;
-            }
+                break;
         }
 
         /// "Dlangui Key Event"
