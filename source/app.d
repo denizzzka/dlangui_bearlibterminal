@@ -96,7 +96,6 @@ class BearLibPlatform : Platform
 
                     case keycode.resized:
                         window.updateDlanguiWindowSize();
-                        window.invalidate();
                         window.show();
                         break;
 
@@ -157,15 +156,17 @@ class BearLibWindow : Window
         }
     }
 
-    private void draw()
+    private void redraw()
     {
         import dlangui_bearlibterminal.drawbuf;
 
-        //~ BT.terminal.clear();
+        BT.terminal.clear();
 
         BearLibDrawBuf buf = new BearLibDrawBuf(width, height);
 
         onDraw(buf);
+
+        BT.terminal.refresh();
 
         destroy(buf);
     }
@@ -195,10 +196,8 @@ class BearLibWindow : Window
             {
                 Log.d("_mainWidget available");
 
-                draw();
+                redraw();
             }
-
-            BT.terminal.refresh();
         }
     }
 
