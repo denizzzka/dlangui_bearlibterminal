@@ -52,6 +52,57 @@ class BearLibPlatform : Platform
 {
     private BearLibWindow window;
 
+    private void processKeyEvent(BT.terminal.keycode event)
+    {
+        if(!(event >= 0x04 && event <= 0x72)) // This is not keyboard event? (key_released is ignored)
+            return;
+
+        /// DlangUI keycode
+        uint dKeyCode;
+
+        with(BT.terminal)
+        {
+            switch(event)
+            {
+                case keycode.left:
+                    dKeyCode = KeyCode.LEFT;
+                    break;
+
+                case keycode.right:
+                    dKeyCode = KeyCode.RIGHT;
+                    break;
+
+                case keycode.down:
+                    dKeyCode = KeyCode.DOWN;
+                    break;
+
+                case keycode.up:
+                    dKeyCode = KeyCode.UP;
+                    break;
+
+                default:
+                    int keytable_diff;
+
+                    // letters
+                    if(event >= keycode.a && event <= keycode.z)
+                        keytable_diff = KeyCode.KEY_A - BT.terminal.keycode.a;
+                    else
+                        return;
+
+                    dKeyCode = event + keytable_diff;
+
+                    break;
+            }
+        }
+
+        /// "Dlangui Key Event"
+        KeyEvent dke = new KeyEvent(KeyAction.KeyDown, dKeyCode, 0, null);
+
+        Log.d("Key event "~event.to!string~" converted to "~(cast(KeyCode) dke.keyCode).to!string);
+
+        window.dispatchKeyEvent(dke);
+    }
+
     private void processMouseEvent(BT.terminal.keycode event)
     {
         if(!(event >= 0x80 && event <= 0x8C)) // This is not mouse event?
@@ -140,7 +191,7 @@ class BearLibPlatform : Platform
                         break;
 
                     default:
-                        // If here is some mouse event it will be processed here:
+                        processKeyEvent(event);
                         processMouseEvent(event);
                         break;
                 }
