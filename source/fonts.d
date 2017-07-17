@@ -75,7 +75,6 @@ class BearLibFont : Font
         buf.printText(x, y, text.to!string);
     }
 
-    // TODO: need to rewrite
     int measureText(const dchar[] text, ref int[] widths, int maxWidth, int tabSize, int tabOffset, uint textFlags)
     {
         int len = BT.terminal.measure(text.to!string).width;
@@ -83,10 +82,11 @@ class BearLibFont : Font
         if(len > maxWidth)
             len = maxWidth;
 
-        widths.length = len;
+        if(widths.length != len)
+            widths.length = len;
 
-        foreach(ref w; widths)
-            w = 1;
+        foreach(int i, ref w; widths)
+            w = i+1;
 
         Log.d(__FUNCTION__~" len="~len.to!string~" widths="~widths.to!string);
 
