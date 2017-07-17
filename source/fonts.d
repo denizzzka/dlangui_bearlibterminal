@@ -82,11 +82,11 @@ class BearLibFont : Font
         if(len > maxWidth)
             len = maxWidth;
 
-        if(widths.length != len)
+        if(widths.length < len)
             widths.length = len;
 
-        foreach(int i, ref w; widths)
-            w = i+1;
+        foreach(int i; 0 .. len)
+            widths[i] = i+1;
 
         Log.d(__FUNCTION__~" len="~len.to!string~" widths="~widths.to!string);
 
