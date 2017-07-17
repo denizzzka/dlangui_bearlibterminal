@@ -52,6 +52,46 @@ class BearLibPlatform : Platform
 {
     private BearLibWindow window;
 
+    private void processMouseEvent(BT.terminal.keycode event)
+    {
+        if(!(event >= 0x80 && event <= 0x8C)) // This is not mouse event?
+            return;
+
+        Log.d("Mouse event "~event.to!string);
+
+        int x = BT.terminal.state(BT.terminal.keycode.mouse_x);
+        int y = BT.terminal.state(BT.terminal.keycode.mouse_y);
+
+        MouseEvent dme; // Dlangui Mouse Event
+
+        with(BT.terminal.keycode)
+        switch(event)
+        {
+            case mouse_left:
+                dme = new MouseEvent(MouseAction.ButtonUp, MouseButton.Left, 0, x, y);
+                break;
+
+            //~ case mouse_right:
+
+            //~ mouse_middle = 0x82,
+            //~ mouse_x1 = 0x83,
+            //~ mouse_x2 = 0x84,
+            //~ mouse_move = 0x85 /* Movement event */,
+            //~ mouse_scroll = 0x86 /* Mouse scroll event */,
+            //~ mouse_x = 0x87 /* Cusor position in cells */,
+            //~ mouse_y = 0x88,
+            //~ mouse_pixel_x = 0x89 /* Cursor position in pixels */,
+            //~ mouse_pixel_y = 0x8A,
+            //~ mouse_wheel = 0x8B /* Scroll direction and amount */,
+            //~ mouse_clicks = 0x8C /* Number of consecutive clicks */,
+
+            default:
+                assert(false, "Mouse event isn't supported: "~event.to!string);
+        }
+
+        window.dispatchMouseEvent(dme);
+    }
+
     override:
 
     BearLibWindow createWindow(dstring windowCaption, Window parent, uint flags, uint width, uint height)
@@ -100,6 +140,8 @@ class BearLibPlatform : Platform
                         break;
 
                     default:
+                        // If here is some mouse event it will be processed here:
+                        processMouseEvent(event);
                         break;
                 }
             }
