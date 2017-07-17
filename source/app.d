@@ -92,12 +92,17 @@ class BearLibPlatform : Platform
                     dKeyCode = KeyCode.SPACE;
                     break;
 
+                case keycode.K_0:
+                    dKeyCode = KeyCode.KEY_0;
+                    break;
+
                 default:
                     int keytable_diff;
 
-                    // letters
-                    if(event >= keycode.a && event <= keycode.z)
-                        keytable_diff = KeyCode.KEY_A - BT.terminal.keycode.a;
+                    if(event >= keycode.a && event <= keycode.z) // letters
+                        keytable_diff = KeyCode.KEY_A - keycode.a;
+                    else if(event >= keycode.K_1 && event <= keycode.K_9) // numbers
+                        keytable_diff = KeyCode.KEY_1 - keycode.K_1;
                     else
                         return;
 
