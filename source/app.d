@@ -95,8 +95,10 @@ class BearLibPlatform : Platform
                         return 0;
 
                     case keycode.resized:
-                        Log.d("resize is unsupported");
-                        return 1;
+                        window.updateDlanguiWindowSize();
+                        window.invalidate();
+                        window.show();
+                        break;
 
                     default:
                         break;
@@ -131,8 +133,12 @@ class BearLibWindow : Window
         super();
 
         BT.terminal.open(caption.to!string);
+        BT.terminal.set("window.resizeable=true");
 
         updateDlanguiWindowSize();
+
+        //FIXME: why this is need here?
+        updateWindowOrContentSize();
     }
 
     ~this()
@@ -148,9 +154,6 @@ class BearLibWindow : Window
                 BT.terminal.state(keycode.width),
                 BT.terminal.state(keycode.height)
             );
-
-            //FIXME: why this is need here?
-            updateWindowOrContentSize();
         }
     }
 
