@@ -80,6 +80,18 @@ class BearLibPlatform : Platform
                     dKeyCode = KeyCode.UP;
                     break;
 
+                case keycode.enter:
+                    dKeyCode = KeyCode.RETURN;
+                    break;
+
+                case keycode.tab:
+                    dKeyCode = KeyCode.TAB;
+                    break;
+
+                case keycode.space:
+                    dKeyCode = KeyCode.SPACE;
+                    break;
+
                 default:
                     int keytable_diff;
 
@@ -336,7 +348,8 @@ extern (C) int UIAppMain(string[] args)
     window.mainWidget.addChild = new TextWidget(null, "Три"d);
     window.mainWidget.addChild = new TextWidget(null, "НЕЧТО ДЛИННОЕ ПРЕДЛИННОЕ"d);
     window.mainWidget.addChild = new TextWidget(null, "Покороче"d);
-    window.mainWidget.addChild = (new Button).text("Some button"d);
+    window.mainWidget.addChild = (new Button).text("Button 1"d);
+    window.mainWidget.addChild = (new Button).text("Button 2"d);
 
     //~ window.mainWidget.measure(SIZE_UNSPECIFIED, SIZE_UNSPECIFIED);
 
