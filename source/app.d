@@ -326,7 +326,6 @@ class BearLibWindow : Window
 
     void invalidate()
     {
-        BT.refresh();
     }
 }
 
