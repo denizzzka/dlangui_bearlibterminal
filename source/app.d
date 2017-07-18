@@ -244,6 +244,7 @@ class BearLibWindow : Window
 
         BT.open(caption.to!string);
         BT.set("window.resizeable=true");
+        BT.set("input.filter={keyboard, mouse}");
 
         updateDlanguiWindowSize();
 
