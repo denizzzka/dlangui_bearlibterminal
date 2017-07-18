@@ -118,12 +118,10 @@ class BearLibPlatform : Platform
         window.dispatchKeyEvent(dke);
     }
 
-    private void processMouseEvent(BT.keycode event)
+    private void processMouseEvent(BT.keycode _event)
     {
-        if(!(event >= 0x80 && event <= 0x8C)) // This is not mouse event?
+        if(!(_event >= 0x80 && _event <= 0x8C)) // This is not mouse event?
             return;
-
-        Log.d("Mouse event "~event.to!string);
 
         int x = BT.state(BT.keycode.mouse_x);
         int y = BT.state(BT.keycode.mouse_y);
@@ -131,29 +129,31 @@ class BearLibPlatform : Platform
         MouseEvent dme; // Dlangui Mouse Event
 
         with(BT.keycode)
-        switch(event)
+        switch(_event)
         {
             case mouse_left:
                 dme = new MouseEvent(MouseAction.ButtonUp, MouseButton.Left, 0, x, y);
                 break;
 
-            //~ case mouse_right:
-
-            //~ mouse_middle = 0x82,
-            //~ mouse_x1 = 0x83,
-            //~ mouse_x2 = 0x84,
-            //~ mouse_move = 0x85 /* Movement event */,
-            //~ mouse_scroll = 0x86 /* Mouse scroll event */,
-            //~ mouse_x = 0x87 /* Cusor position in cells */,
-            //~ mouse_y = 0x88,
-            //~ mouse_pixel_x = 0x89 /* Cursor position in pixels */,
-            //~ mouse_pixel_y = 0x8A,
-            //~ mouse_wheel = 0x8B /* Scroll direction and amount */,
-            //~ mouse_clicks = 0x8C /* Number of consecutive clicks */,
+            case mouse_right:
+            case mouse_middle:
+            case mouse_x1:
+            case mouse_x2:
+            case mouse_move:
+            case mouse_scroll:
+            case mouse_x:
+            case mouse_y:
+            case mouse_pixel_x:
+            case mouse_pixel_y:
+            case mouse_wheel:
+            case mouse_clicks:
+                return;
 
             default:
-                assert(false, "Mouse event isn't supported: "~event.to!string);
+                assert(false, "Mouse event isn't supported: "~_event.to!string);
         }
+
+        Log.d("Mouse event "~_event.to!string~" converted to "~dme.to!string);
 
         window.dispatchMouseEvent(dme);
     }
