@@ -171,9 +171,12 @@ class BearLibPlatform : Platform
 
     void closeWindow(Window w)
     {
+        assert(w == window);
         assert(window !is null);
 
         w.close();
+        destroy(w);
+
         window = null;
     }
 
