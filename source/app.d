@@ -1,6 +1,6 @@
 module dlangui_bearlibterminal.app;
 
-static import BT = BearLibTerminal;
+import BearLibTerminal: BT = terminal;
 import dlangui;
 import dlangui_bearlibterminal.fonts;
 
@@ -52,7 +52,7 @@ class BearLibPlatform : Platform
 {
     private BearLibWindow window;
 
-    private void processKeyEvent(BT.terminal.keycode event)
+    private void processKeyEvent(BT.keycode event)
     {
         if(!(event >= 0x04 && event <= 0x72)) // This is not keyboard event? (key_released is ignored)
             return;
@@ -60,7 +60,7 @@ class BearLibPlatform : Platform
         /// DlangUI keycode
         uint dKeyCode;
 
-        with(BT.terminal)
+        with(BT)
         switch(event)
         {
             case keycode.left:
@@ -118,19 +118,19 @@ class BearLibPlatform : Platform
         window.dispatchKeyEvent(dke);
     }
 
-    private void processMouseEvent(BT.terminal.keycode event)
+    private void processMouseEvent(BT.keycode event)
     {
         if(!(event >= 0x80 && event <= 0x8C)) // This is not mouse event?
             return;
 
         Log.d("Mouse event "~event.to!string);
 
-        int x = BT.terminal.state(BT.terminal.keycode.mouse_x);
-        int y = BT.terminal.state(BT.terminal.keycode.mouse_y);
+        int x = BT.state(BT.keycode.mouse_x);
+        int y = BT.state(BT.keycode.mouse_y);
 
         MouseEvent dme; // Dlangui Mouse Event
 
-        with(BT.terminal.keycode)
+        with(BT.keycode)
         switch(event)
         {
             case mouse_left:
@@ -186,13 +186,13 @@ class BearLibPlatform : Platform
     {
         do
         {
-            if(BT.terminal.has_input)
+            if(BT.has_input)
             {
-                const event = BT.terminal.read();
+                const event = BT.read();
 
                 Log.d("MessageLoop event = "~event.to!string);
 
-                with(BT.terminal)
+                with(BT)
                 switch(event)
                 {
                     case keycode.close:
@@ -239,8 +239,8 @@ class BearLibWindow : Window
         windowOrContentResizeMode = WindowOrContentResizeMode.shrinkWidgets;
         super();
 
-        BT.terminal.open(caption.to!string);
-        BT.terminal.set("window.resizeable=true");
+        BT.open(caption.to!string);
+        BT.set("window.resizeable=true");
 
         updateDlanguiWindowSize();
 
@@ -255,11 +255,11 @@ class BearLibWindow : Window
 
     private void updateDlanguiWindowSize()
     {
-        with(BT.terminal)
+        with(BT)
         {
             onResize(
-                BT.terminal.state(keycode.width),
-                BT.terminal.state(keycode.height)
+                state(keycode.width),
+                state(keycode.height)
             );
         }
     }
@@ -268,13 +268,13 @@ class BearLibWindow : Window
     {
         import dlangui_bearlibterminal.drawbuf;
 
-        BT.terminal.clear();
+        BT.clear();
 
         BearLibDrawBuf buf = new BearLibDrawBuf(width, height);
 
         onDraw(buf);
 
-        BT.terminal.refresh();
+        BT.refresh();
 
         destroy(buf);
     }
@@ -283,7 +283,7 @@ class BearLibWindow : Window
 
     void close()
     {
-        BT.terminal.close();
+        BT.close();
     }
 
     void show()
@@ -311,12 +311,12 @@ class BearLibWindow : Window
 
     dstring windowCaption() @property
     {
-        return BT.terminal.get("window.title", "default_value").to!dstring;
+        return BT.get("window.title", "default_value").to!dstring;
     }
 
     void windowCaption(dstring caption) @property
     {
-        BT.terminal.setf("window.title=%s", caption);
+        BT.setf("window.title=%s", caption);
     }
 
     void windowIcon(DrawBufRef icon) @property
@@ -326,7 +326,7 @@ class BearLibWindow : Window
 
     void invalidate()
     {
-        BT.terminal.refresh();
+        BT.refresh();
     }
 }
 

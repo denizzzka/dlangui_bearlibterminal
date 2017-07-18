@@ -1,6 +1,6 @@
 module dlangui_bearlibterminal.drawbuf;
 
-static import BT = BearLibTerminal;
+import BearLibTerminal: BT = terminal;
 import dlangui;
 
 class BearLibDrawBuf : DrawBuf
@@ -18,7 +18,7 @@ class BearLibDrawBuf : DrawBuf
     {
         Log.d(__FUNCTION__~": x="~x.to!string~" y="~y.to!string~" drawText="~text.to!string);
 
-        BT.terminal.print(x, y, text);
+        BT.print(x, y, text);
     }
 
     override:

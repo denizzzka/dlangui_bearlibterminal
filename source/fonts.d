@@ -64,7 +64,7 @@ class BearLibFont : Font
         //~ return &_glyph;
     }
 
-    static import BT = BearLibTerminal;
+    import BearLibTerminal: BT = terminal;
 
     void drawText(DrawBuf drawBuf, int x, int y, const dchar[] text, uint color, int tabSize, int tabOffset, uint textFlags)
     {
@@ -77,7 +77,7 @@ class BearLibFont : Font
 
     int measureText(const dchar[] text, ref int[] widths, int maxWidth, int tabSize, int tabOffset, uint textFlags)
     {
-        int len = BT.terminal.measure(text.to!string).width;
+        int len = BT.measure(text.to!string).width;
 
         if(len > maxWidth)
             len = maxWidth;
