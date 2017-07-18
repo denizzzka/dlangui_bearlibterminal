@@ -135,22 +135,9 @@ class BearLibPlatform : Platform
                 dme = new MouseEvent(MouseAction.ButtonUp, MouseButton.Left, 0, x, y);
                 break;
 
-            case mouse_right:
-            case mouse_middle:
-            case mouse_x1:
-            case mouse_x2:
-            case mouse_move:
-            case mouse_scroll:
-            case mouse_x:
-            case mouse_y:
-            case mouse_pixel_x:
-            case mouse_pixel_y:
-            case mouse_wheel:
-            case mouse_clicks:
-                return;
-
             default:
-                assert(false, "Mouse event isn't supported: "~_event.to!string);
+                Log.d("Mouse event isn't supported: "~_event.to!string);
+                return;
         }
 
         Log.d("Mouse event "~_event.to!string~" converted to "~dme.to!string);
