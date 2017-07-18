@@ -123,8 +123,8 @@ class BearLibPlatform : Platform
         if(!(_event >= 0x80 && _event <= 0x8C)) // This is not mouse event?
             return;
 
-        int x = BT.state(BT.keycode.mouse_x);
-        int y = BT.state(BT.keycode.mouse_y);
+        short x_coord = BT.state(BT.keycode.mouse_x).to!short;
+        short y_coord = BT.state(BT.keycode.mouse_y).to!short;
 
         MouseEvent dme; // Dlangui Mouse Event
 
@@ -132,7 +132,7 @@ class BearLibPlatform : Platform
         switch(_event)
         {
             case mouse_left:
-                dme = new MouseEvent(MouseAction.ButtonUp, MouseButton.Left, 0, x, y);
+                dme = new MouseEvent(MouseAction.ButtonUp, MouseButton.Left, 0, x_coord, y_coord);
                 break;
 
             default:
