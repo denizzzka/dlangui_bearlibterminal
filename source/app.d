@@ -264,6 +264,7 @@ extern (C) int UIAppMain(string[] args)
     window.mainWidget.addChild = new TextWidget(null, "НЕЧТО ДЛИННОЕ ПРЕДЛИННОЕ"d);
     window.mainWidget.addChild = new TextWidget(null, "Покороче"d);
     window.mainWidget.addChild = (new Button).text("Button 1"d);
+    window.mainWidget.addChild = new EditLine(null, "Some text for parameter 1"d);
 
     auto btn2 = (new Button).text("Button 2"d);
 

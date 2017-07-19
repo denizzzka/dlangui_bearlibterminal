@@ -60,8 +60,7 @@ class BearLibFont : Font
 
     Glyph* getCharGlyph(dchar ch, bool withImage)
     {
-        assert(false, __FUNCTION__~" isn't implemented");
-        //~ return &_glyph;
+        return &_glyph;
     }
 
     import BearLibTerminal: BT = terminal;
