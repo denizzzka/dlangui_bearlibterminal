@@ -3,12 +3,10 @@ module dlangui_bearlibterminal.events;
 import BearLibTerminal: BT = terminal;
 import dlangui;
 
-package:
-
-KeyEvent getKeyEvent(BT.keycode event, bool keyReleased)
+KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
 {
     if(!(event >= 0x04 && event <= 0x72)) // This is not keyboard event? (key_released is ignored)
-        return;
+        return null;
 
     /// DlangUI keycode
     uint dKeyCode;
@@ -56,7 +54,7 @@ KeyEvent getKeyEvent(BT.keycode event, bool keyReleased)
             else if(event >= keycode.K_1 && event <= keycode.K_9) // numbers
                 keytable_diff = KeyCode.KEY_1 - keycode.K_1;
             else
-                return;
+                return null;
 
             dKeyCode = event + keytable_diff;
 
@@ -83,10 +81,10 @@ KeyEvent getKeyEvent(BT.keycode event, bool keyReleased)
     return dke;
 }
 
-MouseEvent getMouseEvent(BT.keycode _event, bool keyReleased)
+MouseEvent convertMouseEvent(BT.keycode _event, bool keyReleased)
 {
     if(!(_event >= 0x80 && _event <= 0x8C)) // This is not mouse event?
-        return;
+        return null;
 
     MouseButton button;
     short wheelDelta = 0;
@@ -120,7 +118,7 @@ MouseEvent getMouseEvent(BT.keycode _event, bool keyReleased)
 
         default:
             Log.d("Mouse event isn't supported: "~_event.to!string);
-            return;
+            return null;
     }
 
     MouseAction buttonDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;

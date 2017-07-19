@@ -108,8 +108,17 @@ class BearLibPlatform : Platform
 
                         const bool keyReleased = btr(cast(size_t*) &event, 8) != 0;
 
-                        window.dispatchKeyEvent(getKeyEvent(event, keyReleased));
-                        window.dispatchMouseEvent(getMouseEvent(event, keyReleased));
+                        {
+                            auto ke = convertKeyEvent(event, keyReleased);
+                            if(ke !is null)
+                                window.dispatchKeyEvent(ke);
+                        }
+
+                        {
+                            auto me = convertMouseEvent(event, keyReleased);
+                            if(me !is null)
+                                window.dispatchMouseEvent(me);
+                        }
 
                         break;
                 }
