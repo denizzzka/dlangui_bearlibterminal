@@ -251,19 +251,14 @@ extern (C) int UIAppMain(string[] args)
     // create window
     Window window = Platform.instance.createWindow("My Window", null);
 
-    //~ window.mainWidget = new VerticalLayout();
-    window.mainWidget = new HorizontalLayout();
+    window.mainWidget = new VerticalLayout();
+    //~ window.mainWidget = new HorizontalLayout();
 
     // create some widget to show in window
     auto someText = new TextWidget(null, "Hello world"d);
     someText.textColor(0xFF0000); // red text
 
     window.mainWidget.addChild = someText;
-    window.mainWidget.addChild = new TextWidget(null, "Second"d);
-    window.mainWidget.addChild = new TextWidget(null, "Три"d);
-    window.mainWidget.addChild = new TextWidget(null, "НЕЧТО ДЛИННОЕ ПРЕДЛИННОЕ"d);
-    window.mainWidget.addChild = new TextWidget(null, "Покороче"d);
-    window.mainWidget.addChild = (new Button).text("Button 1"d);
     window.mainWidget.addChild = new EditLine(null, "Some text for parameter 1"d);
 
     auto btn2 = (new Button).text("Button 2"d);
