@@ -138,6 +138,16 @@ class BearLibPlatform : Platform
         short x_coord = BT.state(BT.keycode.mouse_x).to!short;
         short y_coord = BT.state(BT.keycode.mouse_y).to!short;
 
+        ushort flags;
+
+        with(BT)
+        with(BT.keycode)
+        {
+            if(check(shift)) flags |= MouseFlag.Shift;
+            if(check(ctrl)) flags |= MouseFlag.Control;
+            if(check(alt)) flags |= MouseFlag.Alt;
+        }
+
         MouseEvent dme; // Dlangui Mouse Event
         MouseAction buttonDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;
 
@@ -145,7 +155,7 @@ class BearLibPlatform : Platform
         switch(_event)
         {
             case mouse_left:
-                dme = new MouseEvent(buttonDetails, MouseButton.Left, 0, x_coord, y_coord);
+                dme = new MouseEvent(buttonDetails, MouseButton.Left, flags, x_coord, y_coord);
                 break;
 
             default:
