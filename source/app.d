@@ -52,7 +52,7 @@ class BearLibPlatform : Platform
 {
     private BearLibWindow window;
 
-    private void processKeyEvent(BT.keycode event)
+    private void processKeyEvent(BT.keycode event, bool keyReleased)
     {
         if(!(event >= 0x04 && event <= 0x72)) // This is not keyboard event? (key_released is ignored)
             return;
@@ -110,20 +110,18 @@ class BearLibPlatform : Platform
                 break;
         }
 
-        /// "Dlangui Key Event"
-        KeyEvent dke = new KeyEvent(KeyAction.KeyDown, dKeyCode, 0, null);
+        KeyAction buttonDetails = keyReleased ? KeyAction.KeyUp : KeyAction.KeyDown;
 
-        Log.d("Key event "~event.to!string~" converted to "~(cast(KeyCode) dke.keyCode).to!string);
+        /// "Dlangui Key Event"
+        KeyEvent dke = new KeyEvent(buttonDetails, dKeyCode, 0, null);
+
+        Log.d("Key event "~event.to!string~" converted to "~dke.toString);
 
         window.dispatchKeyEvent(dke);
     }
 
-    private void processMouseEvent(BT.keycode _event)
+    private void processMouseEvent(BT.keycode _event, bool keyReleased)
     {
-        import core.bitop: btr;
-
-        const bool keyReleased = btr(cast(size_t*) &_event, 8) != 0;
-
         if(!(_event >= 0x80 && _event <= 0x8C)) // This is not mouse event?
             return;
 
@@ -183,7 +181,7 @@ class BearLibPlatform : Platform
         {
             if(BT.has_input)
             {
-                const event = BT.read();
+                auto event = BT.read();
 
                 Log.d("MessageLoop event = "~event.to!string);
 
@@ -201,8 +199,13 @@ class BearLibPlatform : Platform
                         break;
 
                     default:
-                        processKeyEvent(event);
-                        processMouseEvent(event);
+                        import core.bitop: btr;
+
+                        const bool keyReleased = btr(cast(size_t*) &event, 8) != 0;
+
+                        processKeyEvent(event, keyReleased);
+                        processMouseEvent(event, keyReleased);
+
                         break;
                 }
             }
@@ -236,7 +239,7 @@ class BearLibWindow : Window
 
         BT.open(caption.to!string);
         BT.set("window.resizeable=true");
-        BT.set("input.filter={keyboard, mouse+}");
+        BT.set("input.filter={keyboard+, mouse+}");
 
         updateDlanguiWindowSize();
 
