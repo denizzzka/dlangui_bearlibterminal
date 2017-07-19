@@ -135,8 +135,25 @@ class BearLibPlatform : Platform
         if(!(_event >= 0x80 && _event <= 0x8C)) // This is not mouse event?
             return;
 
-        short x_coord = BT.state(BT.keycode.mouse_x).to!short;
-        short y_coord = BT.state(BT.keycode.mouse_y).to!short;
+        MouseButton button;
+
+        with(BT.keycode)
+        switch(_event)
+        {
+            case mouse_left:
+                button = MouseButton.Left;
+                break;
+
+            case mouse_right:
+                button = MouseButton.Right;
+                break;
+
+            default:
+                Log.d("Mouse event isn't supported: "~_event.to!string);
+                return;
+        }
+
+        MouseAction buttonDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;
 
         ushort flags;
 
@@ -148,20 +165,11 @@ class BearLibPlatform : Platform
             if(check(alt)) flags |= MouseFlag.Alt;
         }
 
-        MouseEvent dme; // Dlangui Mouse Event
-        MouseAction buttonDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;
+        short x_coord = BT.state(BT.keycode.mouse_x).to!short;
+        short y_coord = BT.state(BT.keycode.mouse_y).to!short;
 
-        with(BT.keycode)
-        switch(_event)
-        {
-            case mouse_left:
-                dme = new MouseEvent(buttonDetails, MouseButton.Left, flags, x_coord, y_coord);
-                break;
-
-            default:
-                Log.d("Mouse event isn't supported: "~_event.to!string);
-                return;
-        }
+        /// "Dlangui Mouse Event"
+        MouseEvent dme = new MouseEvent(buttonDetails, button, flags, x_coord, y_coord);
 
         Log.d("Mouse event "~_event.to!string~" converted to "~dme.to!string);
 
