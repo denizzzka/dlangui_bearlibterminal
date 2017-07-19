@@ -136,6 +136,7 @@ class BearLibPlatform : Platform
             return;
 
         MouseButton button;
+        short wheelDelta = 0;
 
         with(BT.keycode)
         switch(_event)
@@ -160,6 +161,10 @@ class BearLibPlatform : Platform
                 button = MouseButton.XButton2;
                 break;
 
+            case mouse_scroll:
+                wheelDelta = BT.state(mouse_wheel).to!short;
+                break;
+
             default:
                 Log.d("Mouse event isn't supported: "~_event.to!string);
                 return;
@@ -181,9 +186,9 @@ class BearLibPlatform : Platform
         short y_coord = BT.state(BT.keycode.mouse_y).to!short;
 
         /// "Dlangui Mouse Event"
-        MouseEvent dme = new MouseEvent(buttonDetails, button, flags, x_coord, y_coord);
+        MouseEvent dme = new MouseEvent(buttonDetails, button, flags, x_coord, y_coord, wheelDelta);
 
-        Log.d("Mouse event "~_event.to!string~" converted to "~dme.to!string);
+        Log.d("Mouse event "~_event.to!string~" converted to "~dme.to!string, " wheelDelta="~dme.wheelDelta.to!string);
 
         window.dispatchMouseEvent(dme);
     }
