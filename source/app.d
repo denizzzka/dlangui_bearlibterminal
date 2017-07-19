@@ -148,6 +148,18 @@ class BearLibPlatform : Platform
                 button = MouseButton.Right;
                 break;
 
+            case mouse_middle:
+                button = MouseButton.Middle;
+                break;
+
+            case mouse_x1:
+                button = MouseButton.XButton1;
+                break;
+
+            case mouse_x2:
+                button = MouseButton.XButton2;
+                break;
+
             default:
                 Log.d("Mouse event isn't supported: "~_event.to!string);
                 return;
