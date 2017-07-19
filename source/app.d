@@ -112,8 +112,18 @@ class BearLibPlatform : Platform
 
         KeyAction buttonDetails = keyReleased ? KeyAction.KeyUp : KeyAction.KeyDown;
 
+        uint flags;
+
+        with(BT)
+        with(BT.keycode)
+        {
+            if(check(shift)) flags |= KeyFlag.Shift;
+            if(check(ctrl)) flags |= KeyFlag.Control;
+            if(check(alt)) flags |= KeyFlag.Alt;
+        }
+
         /// "Dlangui Key Event"
-        KeyEvent dke = new KeyEvent(buttonDetails, dKeyCode, 0, null);
+        KeyEvent dke = new KeyEvent(buttonDetails, dKeyCode, flags, null);
 
         Log.d("Key event "~event.to!string~" converted to "~dke.toString);
 
