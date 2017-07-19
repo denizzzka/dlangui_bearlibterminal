@@ -120,6 +120,10 @@ class BearLibPlatform : Platform
 
     private void processMouseEvent(BT.keycode _event)
     {
+        import core.bitop: btr;
+
+        const bool keyReleased = btr(cast(size_t*) &_event, 8) != 0;
+
         if(!(_event >= 0x80 && _event <= 0x8C)) // This is not mouse event?
             return;
 
@@ -127,12 +131,13 @@ class BearLibPlatform : Platform
         short y_coord = BT.state(BT.keycode.mouse_y).to!short;
 
         MouseEvent dme; // Dlangui Mouse Event
+        MouseAction buttonDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;
 
         with(BT.keycode)
         switch(_event)
         {
             case mouse_left:
-                dme = new MouseEvent(MouseAction.ButtonUp, MouseButton.Left, 0, x_coord, y_coord);
+                dme = new MouseEvent(buttonDetails, MouseButton.Left, 0, x_coord, y_coord);
                 break;
 
             default:
@@ -231,7 +236,7 @@ class BearLibWindow : Window
 
         BT.open(caption.to!string);
         BT.set("window.resizeable=true");
-        BT.set("input.filter={keyboard, mouse}");
+        BT.set("input.filter={keyboard, mouse+}");
 
         updateDlanguiWindowSize();
 
