@@ -43,6 +43,8 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
                 keytable_diff = KeyCode.KEY_A - keycode.a;
             else if(event >= keycode.K_1 && event <= keycode.K_9) // numbers
                 keytable_diff = KeyCode.KEY_1 - keycode.K_1;
+            else if(event >= keycode.F1 && event <= keycode.F12) // Fxx keys
+                keytable_diff = KeyCode.F1 - keycode.F1;
             else
                 return null;
 
