@@ -9,32 +9,32 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
         return null;
 
     /// DlangUI keycode
-    uint dKeyCode;
+    uint dk;
 
     with(BT)
     switch(event)
     {
-        case keycode.left: dKeyCode = KeyCode.LEFT; break;
-        case keycode.right: dKeyCode = KeyCode.RIGHT; break;
-        case keycode.down: dKeyCode = KeyCode.DOWN; break;
-        case keycode.up: dKeyCode = KeyCode.UP; break;
-        case keycode.enter: dKeyCode = KeyCode.RETURN; break;
-        case keycode.tab: dKeyCode = KeyCode.TAB; break;
-        case keycode.space: dKeyCode = KeyCode.SPACE; break;
-        case keycode.escape: dKeyCode = KeyCode.ESCAPE; break;
-        case keycode.backspace: dKeyCode = KeyCode.BACK; break;
-        case keycode.minus: dKeyCode = KeyCode.KEY_SUBTRACT; break;
-        case keycode.equals: dKeyCode = KeyCode.EQUAL; break;
-        case keycode.lbracket: dKeyCode = KeyCode.KEY_BRACKETOPEN; break;
-        case keycode.rbracket: dKeyCode = KeyCode.KEY_BRACKETCLOSE; break;
-        case keycode.backslash: dKeyCode = KeyCode.BACKSLASH; break;
-        case keycode.semicolon: dKeyCode = KeyCode.SEMICOLON; break;
-        case keycode.apostrophe: dKeyCode = KeyCode.QUOTE; break;
+        case keycode.left: dk = KeyCode.LEFT; break;
+        case keycode.right: dk = KeyCode.RIGHT; break;
+        case keycode.down: dk = KeyCode.DOWN; break;
+        case keycode.up: dk = KeyCode.UP; break;
+        case keycode.enter: dk = KeyCode.RETURN; break;
+        case keycode.tab: dk = KeyCode.TAB; break;
+        case keycode.space: dk = KeyCode.SPACE; break;
+        case keycode.escape: dk = KeyCode.ESCAPE; break;
+        case keycode.backspace: dk = KeyCode.BACK; break;
+        case keycode.minus: dk = KeyCode.KEY_SUBTRACT; break;
+        case keycode.equals: dk = KeyCode.EQUAL; break;
+        case keycode.lbracket: dk = KeyCode.KEY_BRACKETOPEN; break;
+        case keycode.rbracket: dk = KeyCode.KEY_BRACKETCLOSE; break;
+        case keycode.backslash: dk = KeyCode.BACKSLASH; break;
+        case keycode.semicolon: dk = KeyCode.SEMICOLON; break;
+        case keycode.apostrophe: dk = KeyCode.QUOTE; break;
         case keycode.grave: break; /*  `  */
-        case keycode.comma: dKeyCode = KeyCode.KEY_COMMA; break;
-        case keycode.period: dKeyCode = KeyCode.KEY_PERIOD; break;
-        case keycode.slash: dKeyCode = KeyCode.SLASH; break;
-        case keycode.K_0: dKeyCode = KeyCode.KEY_0; break;
+        case keycode.comma: dk = KeyCode.KEY_COMMA; break;
+        case keycode.period: dk = KeyCode.KEY_PERIOD; break;
+        case keycode.slash: dk = KeyCode.SLASH; break;
+        case keycode.K_0: dk = KeyCode.KEY_0; break;
 
         default:
             int keytable_diff;
@@ -46,7 +46,7 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
             else
                 return null;
 
-            dKeyCode = event + keytable_diff;
+            dk = event + keytable_diff;
 
             break;
     }
@@ -64,7 +64,7 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
     }
 
     /// "Dlangui Key Event"
-    KeyEvent dke = new KeyEvent(buttonDetails, dKeyCode, flags, null);
+    KeyEvent dke = new KeyEvent(buttonDetails, dk, flags, null);
 
     Log.d("Key event "~event.to!string~" converted to "~dke.toString);
 
