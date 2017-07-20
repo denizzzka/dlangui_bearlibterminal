@@ -87,7 +87,7 @@ class BearLibFont : Font
         foreach(int i; 0 .. len)
             widths[i] = i+1;
 
-        Log.d(__FUNCTION__~" len="~len.to!string~" widths="~widths.to!string);
+        Log.v(__FUNCTION__~" len="~len.to!string~" widths="~widths.to!string);
 
         return len;
     }

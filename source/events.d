@@ -84,7 +84,7 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
     /// "Dlangui Key Event"
     KeyEvent dke = new KeyEvent(buttonDetails, dk, flags, null);
 
-    Log.d("Key event "~event.to!string~" converted to "~dke.toString);
+    Log.v("Key event "~event.to!string~" converted to "~dke.toString);
 
     return dke;
 }
@@ -111,7 +111,7 @@ MouseEvent convertMouseEvent(BT.keycode _event, bool keyReleased)
             break;
 
         default:
-            Log.d("Mouse event isn't supported: "~_event.to!string);
+            Log.w("Mouse event isn't supported: "~_event.to!string);
             return null;
     }
 
@@ -133,7 +133,7 @@ MouseEvent convertMouseEvent(BT.keycode _event, bool keyReleased)
     /// "Dlangui Mouse Event"
     MouseEvent dme = new MouseEvent(btnDetails, btn, flags, x_coord, y_coord, wheelDelta);
 
-    Log.d("Mouse event "~_event.to!string~" converted to "~dme.to!string, " wheelDelta="~dme.wheelDelta.to!string);
+    Log.v("Mouse event "~_event.to!string~" converted to "~dme.to!string, " wheelDelta="~dme.wheelDelta.to!string);
 
     return dme;
 }
