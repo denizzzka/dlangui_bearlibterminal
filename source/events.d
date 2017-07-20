@@ -30,7 +30,7 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
         case keycode.backslash: dk = KeyCode.BACKSLASH; break;
         case keycode.semicolon: dk = KeyCode.SEMICOLON; break;
         case keycode.apostrophe: dk = KeyCode.QUOTE; break;
-        case keycode.grave: break; /*  FIXME: symbol `  */
+        case keycode.grave: dk = KeyCode.TILDE; break;
         case keycode.comma: dk = KeyCode.KEY_COMMA; break;
         case keycode.period: dk = KeyCode.KEY_PERIOD; break;
         case keycode.slash: dk = KeyCode.SLASH; break;
