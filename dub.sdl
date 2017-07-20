@@ -8,3 +8,10 @@ dependency "dlangui" version="~>0.9.82"
 subConfiguration "dlangui" "external"
 stringImportPaths "views" "views/res"
 versions "EmbedStandardResources" "NO_FREETYPE"
+
+subPackage {
+    name "example"
+    sourcePaths "example/source"
+    targetType "executable"
+    dependency "dlangui_bearlibterminal" version="*"
+}
