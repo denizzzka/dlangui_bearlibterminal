@@ -8,6 +8,7 @@ extern(C) int DLANGUImain(string[] args)
     import dlangui_bearlibterminal.fonts: BearLibFontManager;
 
     initLogs();
+    Log.setLogLevel = LogLevel.Warn; //TODO: remove it after fix https://github.com/Elronnd/bearlibterminal-dlang/issues/6
     SCREEN_DPI = 10; // TODO: wtf?
     Platform.setInstance = new BearLibPlatform();
     FontManager.instance = new BearLibFontManager();
