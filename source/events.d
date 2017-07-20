@@ -42,11 +42,13 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
         case keycode.pagedown: dk = KeyCode.PAGEDOWN; break;
         case keycode.KP_divide: dk = KeyCode.DIV; break;
         case keycode.KP_multiply: dk = KeyCode.MUL; break;
+        case keycode.KP_plus: dk = KeyCode.ADD; break;
         case keycode.KP_minus: dk = KeyCode.SUB; break;
         case keycode.kp_period: dk = KeyCode.DECIMAL; break;
         case keycode.KP_enter: dk = KeyCode.RETURN; break;
         case keycode.K_delete: dk = KeyCode.DEL; break;
         case keycode.K_0: dk = KeyCode.KEY_0; break;
+        case keycode.KP_0: dk = KeyCode.NUM_0; break;
 
         default:
             int keytable_diff;
@@ -55,6 +57,8 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
                 keytable_diff = KeyCode.KEY_A - keycode.a;
             else if(event >= keycode.K_1 && event <= keycode.K_9) // numbers
                 keytable_diff = KeyCode.KEY_1 - keycode.K_1;
+            else if(event >= keycode.KP_1 && event <= keycode.KP_9) // numpad numbers
+                keytable_diff = KeyCode.NUM_1 - keycode.KP_1;
             else if(event >= keycode.F1 && event <= keycode.F12) // Fxx keys
                 keytable_diff = KeyCode.F1 - keycode.F1;
             else
