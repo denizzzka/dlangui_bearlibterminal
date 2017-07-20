@@ -44,14 +44,6 @@ class BearLibDrawBuf : DrawBuf
         assert(false, __FUNCTION__~" isn't implemented");
     }
 
-    //TODO: remove it. This is copy'n'paste from consoleapp.d
-    static immutable dstring SPACE_STRING =
-            "                                                                                                    "
-          ~ "                                                                                                    "
-          ~ "                                                                                                    "
-          ~ "                                                                                                    "
-          ~ "                                                                                                    ";
-
     /// fill rectangle with solid color (clipping is applied)
     void fillRect(Rect rc, uint color)
     {
@@ -60,12 +52,10 @@ class BearLibDrawBuf : DrawBuf
         if (alpha >= 128)
             return; // transparent
 
-        //TODO: enable color changing:
+        //FIXME: enable color changing:
         //~ _console.backgroundColor = toConsoleColor(color);
 
-        if (applyClipping(rc))
-            foreach(y; rc.top .. rc.bottom)
-                printText(rc.left, y, SPACE_STRING[0 .. rc.width].to!string);
+        BT.clear_area(rc.left, rc.top, rc.width, rc.height);
     }
 
     void drawPixel(int x, int y, uint color)
