@@ -1,6 +1,6 @@
 module dlangui_bearlibterminal.dlangui_main;
 
-public import dlangui;
+import dlangui;
 
 extern(C) int DLANGUImain(string[] args)
 {

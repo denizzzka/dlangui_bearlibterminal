@@ -1,4 +1,4 @@
-import dlangui_main;
+import dlangui;
 
 mixin APP_ENTRY_POINT;
 
