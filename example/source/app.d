@@ -23,7 +23,7 @@ extern (C) int UIAppMain(string[] args)
     btn2.click =
         delegate(Widget w)
         {
-            Log.d("Button click!");
+            Log.i("Button click!");
             return true;
         };
 
