@@ -155,6 +155,13 @@ class BearLibWindow : Window
         BT.set("window.resizeable=true");
         BT.set("input.filter={keyboard+, mouse+}");
 
+        // set background color:
+        {
+            BT.bkcolor(0xFF_55_55_77);
+            BT.clear();
+            BT.refresh();
+        }
+
         updateDlanguiWindowSize();
 
         //FIXME: why this is need here?

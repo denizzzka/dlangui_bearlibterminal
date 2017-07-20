@@ -14,10 +14,11 @@ class BearLibDrawBuf : DrawBuf
         _height = h;
     }
 
-    void printText(int x, int y, string text)
+    void printText(int x, int y, uint argb_color, string text)
     {
-        Log.d(__FUNCTION__~": x="~x.to!string~" y="~y.to!string~" drawText="~text.to!string);
+        Log.d("set color="~argb_color.to!string);
 
+        BT.color(argb_color.toColor);
         BT.print(x, y, text);
     }
 
@@ -52,9 +53,7 @@ class BearLibDrawBuf : DrawBuf
         if (alpha >= 128)
             return; // transparent
 
-        //FIXME: enable color changing:
-        //~ _console.backgroundColor = toConsoleColor(color);
-
+        BT.bkcolor(color);
         BT.clear_area(rc.left, rc.top, rc.width, rc.height);
     }
 
@@ -77,4 +76,11 @@ class BearLibDrawBuf : DrawBuf
     {
         assert(false, __FUNCTION__~" isn't implemented");
     }
+}
+
+static import BearLibTerminal;
+
+BearLibTerminal.color_t toColor(uint fromColor) pure
+{
+    return fromColor ^ uint.max;
 }

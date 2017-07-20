@@ -65,13 +65,13 @@ class BearLibFont : Font
 
     import BearLibTerminal: BT = terminal;
 
-    void drawText(DrawBuf drawBuf, int x, int y, const dchar[] text, uint color, int tabSize, int tabOffset, uint textFlags)
+    void drawText(DrawBuf drawBuf, int x, int y, const dchar[] text, uint argb_color, int tabSize, int tabOffset, uint textFlags)
     {
         import dlangui_bearlibterminal.drawbuf: BearLibDrawBuf;
 
         auto buf = cast(BearLibDrawBuf) drawBuf;
 
-        buf.printText(x, y, text.to!string);
+        buf.printText(x, y, argb_color, text.to!string);
     }
 
     int measureText(const dchar[] text, ref int[] widths, int maxWidth, int tabSize, int tabOffset, uint textFlags)
