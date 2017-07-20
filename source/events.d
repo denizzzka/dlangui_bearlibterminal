@@ -76,31 +76,17 @@ MouseEvent convertMouseEvent(BT.keycode _event, bool keyReleased)
     if(!(_event >= 0x80 && _event <= 0x8C)) // This is not mouse event?
         return null;
 
-    MouseButton button;
+    MouseButton btn;
     short wheelDelta = 0;
 
     with(BT.keycode)
     switch(_event)
     {
-        case mouse_left:
-            button = MouseButton.Left;
-            break;
-
-        case mouse_right:
-            button = MouseButton.Right;
-            break;
-
-        case mouse_middle:
-            button = MouseButton.Middle;
-            break;
-
-        case mouse_x1:
-            button = MouseButton.XButton1;
-            break;
-
-        case mouse_x2:
-            button = MouseButton.XButton2;
-            break;
+        case mouse_left: btn = MouseButton.Left; break;
+        case mouse_right: btn = MouseButton.Right; break;
+        case mouse_middle: btn = MouseButton.Middle; break;
+        case mouse_x1: btn = MouseButton.XButton1; break;
+        case mouse_x2: btn = MouseButton.XButton2; break;
 
         case mouse_scroll:
             wheelDelta = BT.state(mouse_wheel).to!short;
@@ -111,7 +97,7 @@ MouseEvent convertMouseEvent(BT.keycode _event, bool keyReleased)
             return null;
     }
 
-    MouseAction buttonDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;
+    MouseAction btnDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;
 
     ushort flags;
 
@@ -127,7 +113,7 @@ MouseEvent convertMouseEvent(BT.keycode _event, bool keyReleased)
     short y_coord = BT.state(BT.keycode.mouse_y).to!short;
 
     /// "Dlangui Mouse Event"
-    MouseEvent dme = new MouseEvent(buttonDetails, button, flags, x_coord, y_coord, wheelDelta);
+    MouseEvent dme = new MouseEvent(btnDetails, btn, flags, x_coord, y_coord, wheelDelta);
 
     Log.d("Mouse event "~_event.to!string~" converted to "~dme.to!string, " wheelDelta="~dme.wheelDelta.to!string);
 
