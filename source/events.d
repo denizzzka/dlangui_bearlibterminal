@@ -30,10 +30,22 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
         case keycode.backslash: dk = KeyCode.BACKSLASH; break;
         case keycode.semicolon: dk = KeyCode.SEMICOLON; break;
         case keycode.apostrophe: dk = KeyCode.QUOTE; break;
-        case keycode.grave: break; /*  `  */
+        case keycode.grave: break; /*  FIXME: symbol `  */
         case keycode.comma: dk = KeyCode.KEY_COMMA; break;
         case keycode.period: dk = KeyCode.KEY_PERIOD; break;
         case keycode.slash: dk = KeyCode.SLASH; break;
+        case keycode.pause: dk = KeyCode.PAUSE; break;
+        case keycode.insert: dk = KeyCode.INS; break;
+        case keycode.home: dk = KeyCode.HOME; break;
+        case keycode.end: dk = KeyCode.END; break;
+        case keycode.pageup: dk = KeyCode.PAGEUP; break;
+        case keycode.pagedown: dk = KeyCode.PAGEDOWN; break;
+        case keycode.KP_divide: dk = KeyCode.DIV; break;
+        case keycode.KP_multiply: dk = KeyCode.MUL; break;
+        case keycode.KP_minus: dk = KeyCode.SUB; break;
+        case keycode.kp_period: dk = KeyCode.DECIMAL; break;
+        case keycode.KP_enter: dk = KeyCode.RETURN; break;
+        case keycode.K_delete: dk = KeyCode.DEL; break;
         case keycode.K_0: dk = KeyCode.KEY_0; break;
 
         default:
