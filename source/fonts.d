@@ -94,6 +94,16 @@ class BearLibFont : Font
 
     Point measureMultilineText(const dchar[] text, int maxLines, int maxWidth, int tabSize, int tabOffset, uint textFlags)
     {
-        assert(false, __FUNCTION__~" isn't implemented");
+        auto dim = BT.measure(text.to!string);
+
+        if(dim.width > maxWidth)
+            dim.width = maxWidth;
+
+        if(dim.height > maxLines)
+            dim.height = maxLines;
+
+        Point ret = {x: dim.width, y: dim.height};
+
+        return ret;
     }
 }
