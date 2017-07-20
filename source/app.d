@@ -11,7 +11,7 @@ extern(C) int DLANGUImain(string[] args)
 
     initLogs();
     SCREEN_DPI = 10; // TODO: wtf?
-    Platform.setInstance(new BearLibPlatform());
+    Platform.setInstance = new BearLibPlatform();
     FontManager.instance = new BearLibFontManager();
     initResourceManagers();
 
