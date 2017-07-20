@@ -95,6 +95,7 @@ MouseEvent convertMouseEvent(BT.keycode _event, bool keyReleased)
         return null;
 
     MouseButton btn;
+    MouseAction btnDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;
     short wheelDelta = 0;
 
     with(BT.keycode)
@@ -107,15 +108,18 @@ MouseEvent convertMouseEvent(BT.keycode _event, bool keyReleased)
         case mouse_x2: btn = MouseButton.XButton2; break;
 
         case mouse_scroll:
+            btnDetails = MouseAction.Wheel;
             wheelDelta = BT.state(mouse_wheel).to!short;
+            break;
+
+        case mouse_move:
+            btnDetails = MouseAction.Move;
             break;
 
         default:
             Log.w("Mouse event isn't supported: "~_event.to!string);
             return null;
     }
-
-    MouseAction btnDetails = keyReleased ? MouseAction.ButtonUp : MouseAction.ButtonDown;
 
     ushort flags;
 
