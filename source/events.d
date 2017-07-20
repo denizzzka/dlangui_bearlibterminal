@@ -42,6 +42,20 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
             dKeyCode = KeyCode.SPACE;
             break;
 
+        case keycode.escape: dKeyCode = KeyCode.ESCAPE; break;
+        case keycode.backspace: dKeyCode = KeyCode.BACK; break;
+        case keycode.minus: dKeyCode = KeyCode.KEY_SUBTRACT; break;
+        case keycode.equals: dKeyCode = KeyCode.EQUAL; break;
+        case keycode.lbracket: dKeyCode = KeyCode.KEY_BRACKETOPEN; break;
+        case keycode.rbracket: dKeyCode = KeyCode.KEY_BRACKETCLOSE; break;
+        case keycode.backslash: dKeyCode = KeyCode.BACKSLASH; break;
+        case keycode.semicolon: dKeyCode = KeyCode.SEMICOLON; break;
+        case keycode.apostrophe: dKeyCode = KeyCode.QUOTE; break;
+        case keycode.grave: break; /*  `  */
+        case keycode.comma: dKeyCode = KeyCode.KEY_COMMA; break;
+        case keycode.period: dKeyCode = KeyCode.KEY_PERIOD; break;
+        case keycode.slash: dKeyCode = KeyCode.SLASH; break;
+
         case keycode.K_0:
             dKeyCode = KeyCode.KEY_0;
             break;
