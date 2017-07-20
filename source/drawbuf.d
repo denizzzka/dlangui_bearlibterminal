@@ -82,5 +82,5 @@ static import BearLibTerminal;
 
 BearLibTerminal.color_t toColor(uint fromColor) pure
 {
-    return fromColor ^ uint.max;
+    return fromColor ^ 0xFF_00_00_00;
 }

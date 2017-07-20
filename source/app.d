@@ -157,7 +157,7 @@ class BearLibWindow : Window
 
         // set background color:
         {
-            BT.bkcolor(0xFF_55_55_77);
+            BT.bkcolor(backgroundColor);
             BT.clear();
             BT.refresh();
         }
