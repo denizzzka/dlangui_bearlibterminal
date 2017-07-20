@@ -253,7 +253,7 @@ class BearLibWindow : Window
 extern (C) int UIAppMain(string[] args)
 {
     // embed resources into executable
-    embeddedResourceList.addResources(embedResourcesFromList!("console_standard_resources.list")());
+    //~ embeddedResourceList.addResources(embedResourcesFromList!("bearlib_resources.list")());
 
     // create window
     Window window = Platform.instance.createWindow("My Window", null);

@@ -78,6 +78,8 @@ class BearLibDrawBuf : DrawBuf
     }
 }
 
+package:
+
 static import BearLibTerminal;
 
 BearLibTerminal.color_t toColor(uint fromColor) pure

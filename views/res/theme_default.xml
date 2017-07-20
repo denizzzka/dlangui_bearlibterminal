@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+<theme id="theme_default" 
+        fontSize="1" 
+        fontFace="Arial"
+        fontFamily="SansSerif"
+        textColor="#C0C0C0"
+        >
+    <color id="window_background" value="#000000"/>
+    <color id="dialog_background" value="#000000"/>
+    <color id="edit_background" value="#000000"/>
+    <color id="edit_caret" value="#000000"/>
+    <color id="edit_caret_replace" value="#000000"/>
+    <color id="editor_matching_bracket_highlight" value="#800000"/>
+    <color id="editor_selection_focused" value="#008080"/>
+    <color id="editor_selection_normal" value="#800080"/>
+    <color id="editor_left_pane_background" value="#FFFFFFFF"/>
+    <color id="editor_left_pane_background2" value="#FFFFFFFF"/>
+    <color id="editor_left_pane_background3" value="FFFFFFFF"/>
+    <color id="editor_left_pane_line_number_text" value="#808080"/>
+    <color id="editor_left_pane_line_number_text_edited" value="#FFFF00"/>
+    <color id="editor_left_pane_line_number_text_saved" value="#00FF00"/>
+    <color id="editor_left_pane_line_number_text_current_line" value="#FFFFFF"/>
+    <color id="editor_left_pane_line_number_background" value="#FFFFFFFF"/>
+    <color id="editor_left_pane_line_number_background_current_line" value="#808080"/>
+    <color id="editor_left_pane_line_icon_color_breakpoint" value="#FF0000"/>
+    <color id="editor_left_pane_line_icon_color_bookmark" value="#00FF00"/>
+    <color id="editor_left_pane_line_icon_color_error" value="#800000"/>
+
+    <color id="grid_selection_color" value="#008000"/>
+    <color id="grid_selection_color_row" value="#008000"/>
+    <color id="grid_cell_background_fixed" value="#FFFFFFFF"/>
+    <color id="grid_cell_border_color" value="#C0C0C0C0"/>
+    <color id="grid_cell_border_color_header" value="#C0202020"/>
+    <color id="grid_cell_text_color_header" value="#FFFFFF"/>
+    <color id="grid_cell_background_header" value="#808080"/>
+    <color id="grid_cell_background_header_selected" value="#008000"/>
+    <color id="file_dialog_dir_name_color" value="#FFFF00"/>
+
+    <drawable id="arrow_right_down_black" value="{'▼ ' #008000}"/>
+    <drawable id="arrow_right_hollow" value="{'► ' #008000}"/>
+    <drawable id="btn_check" value="btn_check"/>
+    <drawable id="btn_radio" value="btn_radio"/>
+    <drawable id="scrollbar_button_up" value="{'▲' #FFFF00}"/>
+    <drawable id="scrollbar_button_down" value="{'▼' #FFFF00}"/>
+    <drawable id="scrollbar_button_left" value="{'◄' #FFFF00}"/>
+    <drawable id="scrollbar_button_right" value="{'►' #FFFF00}"/>
+    <drawable id="scrollbar_indicator_vertical" value="{'' #FFFF00}"/>
+    <drawable id="scrollbar_indicator_horizontal" value="{'' #FFFF00}"/>
+    <drawable id="grid_cell_background_header" value="{' │' #000000 bc #808080 ninepatch 0 0 1 0 padding 0 0 1 0}"/>
+    <drawable id="grid_cell_background_row_header" value="{' ▐' #000000 bc #808080 ninepatch 0 0 1 0 padding 0 0 1 0}"/>
+    <drawable id="grid_cell_background_header_selected" value="{' │' #000000 bc #008000 #808080 ninepatch 0 0 1 0 padding 0 0 1 0}"/>
+    <drawable id="grid_cell_background_row_header_selected" value="{' ▐' #000000 bc #008000 ninepatch 0 0 1 0 padding 0 0 1 0}"/>
+
+    <style id="BUTTON"
+        backgroundImageId="{'▄' ' ' '▀' tc 0x808080 bc 0xFFFFFFFF 0x808080 0xFFFFFFFF ninepatch 0 1 0 1 padding 1 1 1 1}"
+        align="Center"
+        textFlags="UnderlineHotKeys"
+	textColor="#FFFFFF"
+        margins="0,0,1,0"
+        padding="1,0,1,0"
+        >
+        <state state_enabled="false" textColor="#C0C0C0" backgroundImageId="{'▄' ' ' '▀' tc 0x808080 bc 0xFFFFFFFF 0x808080 0xFFFFFFFF ninepatch 0 1 0 1 padding 1 1 1 1}"/>
+        <state state_pressed="true" textColor="#000000" backgroundImageId="{'▄' ' ' '▀' tc 0xC0C0C0 bc 0xFFFFFFFF 0xC0C0C0 0xFFFFFFFF ninepatch 0 1 0 1 padding 1 1 1 1}"/>
+        <state state_focused="true" textColor="#000000" backgroundImageId="{'▄' ' ' '▀' tc 0xFFFF00 bc 0xFFFFFFFF 0xFFFF00 0xFFFFFFFF ninepatch 0 1 0 1 padding 1 1 1 1}"/>
+        <state state_enabled="true" state_hovered="true" textColor="#FF0000"/>
+    </style>
+    <style id="BUTTON_TRANSPARENT"
+        align="Center"
+        margins="0,0,0,0"
+        />
+    <style id="BUTTON_CHECK_TRANSPARENT"
+        align="Center"
+        margins="0,0,0,0"
+        />
+    <style id="BUTTON_LABEL"
+        layoutWidth="FILL_PARENT"
+        align="Left|VCenter"
+        textFlags="UnderlineHotKeys"
+	textColor="#FFFFFF"
+        >
+        <state state_enabled="false" textColor="#C0C0C0"/>
+        <state state_pressed="true" textColor="#000000"/>
+        <state state_focused="true" textColor="#000000"/>
+        <state state_enabled="true" state_hovered="true" textColor="#FF0000"/>
+    </style>
+    <style id="BUTTON_LABEL_LINK" parent="BUTTON_LABEL"
+        textColor="#0000C0"
+        >
+        <state state_enabled="false" textColor="#60C0C0FF"/>
+        <state state_enabled="true" state_hovered="true" textColor="#8080FF" textFlags="Underline"/>
+    </style>
+    <style id="BUTTON_IMAGE"
+        align="Center"
+        />
+    <style id="SWITCH"
+        backgroundImageId="{'▄▄▄▄▄ ' ' On   ' '▀▀▀▀▀ '  tc 0x808080 0x808080 0x808080 0x808080 0x808080 0x808080 0x00FF00 0x00FF00 0x00FF00 0x00FF00 0x00FF00 0x00FF00 0x808080 0x808080 0x808080 0x808080 0x808080 0x808080 bc 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0x808080 0x808080 0x808080 0x808080 0x808080 0x808080 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF ninepatch 5 1 0 1 padding 5 1 1 1}"
+        align="Center"
+        textFlags="UnderlineHotKeys"
+	textColor="#FFFFFF"
+        margins="0,0,1,0"
+        padding="1,0,1,0"
+        >
+        <state state_enabled="false" state_checked="true" textColor="#C0C0C0"  backgroundImageId="{'▄▄▄▄▄ ' ' On   ' '▀▀▀▀▀ '  tc 0x808080 0x808080 0x808080 0x808080 0x808080 0x808080  0x008000 0x008000 0x008000 0x008000 0x008000 0x008000  0x808080 0x808080 0x808080 0x808080 0x808080 0x808080   bc 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF   0x808080 0x808080 0x808080 0x808080 0x808080 0xFFFFFFFF   0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF ninepatch 5 1 0 1 padding 5 1 1 1}"/>
+        <state state_enabled="false" state_checked="false" textColor="#C0C0C0" backgroundImageId="{'▄▄▄▄▄ ' ' Off  ' '▀▀▀▀▀ '  tc 0x808080 0x808080 0x808080 0x808080 0x808080 0x808080  0x800000 0x800000 0x800000 0x800000 0x800000 0x800000  0x808080 0x808080 0x808080 0x808080 0x808080 0x808080   bc 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF   0x808080 0x808080 0x808080 0x808080 0x808080 0xFFFFFFFF   0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF ninepatch 5 1 0 1 padding 5 1 1 1}"/>
+        <state state_enabled="true" state_checked="true" textColor="#C0C0C0"   backgroundImageId="{'▄▄▄▄▄ ' ' On   ' '▀▀▀▀▀ '  tc 0x808080 0x808080 0x808080 0x808080 0x808080 0x808080  0x00FF00 0x00FF00 0x00FF00 0x00FF00 0x00FF00 0x00FF00  0x808080 0x808080 0x808080 0x808080 0x808080 0x808080   bc 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF   0x808080 0x808080 0x808080 0x808080 0x808080 0xFFFFFFFF   0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF ninepatch 5 1 0 1 padding 5 1 1 1}"/>
+        <state state_enabled="true" state_checked="false" textColor="#C0C0C0"  backgroundImageId="{'▄▄▄▄▄ ' ' Off  ' '▀▀▀▀▀ '  tc 0x808080 0x808080 0x808080 0x808080 0x808080 0x808080  0xFF0000 0xFF0000 0xFF0000 0xFF0000 0xFF0000 0xFF0000  0x808080 0x808080 0x808080 0x808080 0x808080 0x808080   bc 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF   0x808080 0x808080 0x808080 0x808080 0x808080 0xFFFFFFFF   0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF ninepatch 5 1 0 1 padding 5 1 1 1}"/>
+    </style>
+    <style id="CHECKBOX"
+        backgroundImageId="@null"
+        margins="0,0,0,0"
+        padding="1,0,1,0"
+        />
+    <style id="CHECKBOX_IMAGE" parent="BUTTON_IMAGE"
+        align="Center"
+        margins="0,0,0,0"
+        />
+    <style id="CHECKBOX_LABEL"
+        align="Left|VCenter"
+        margins="1,0,0,0"
+	textColor="#C0C0C0"
+        >
+        <state state_enabled="false" textColor="#808080"/>
+        <state state_focused="true" textColor="#FFFF00"/>
+        <state state_enabled="true" state_hovered="true" textColor="#FF0000"/>
+    </style>
+    <style id="RADIOBUTTON" parent="CHECKBOX"
+        margins="0,0,0,0"
+        padding="1,0,1,0"
+        />
+    <style id="RADIOBUTTON_IMAGE" parent="CHECKBOX_IMAGE"
+        align="Center"
+        margins="0,0,0,0"
+        />
+    <style id="RADIOBUTTON_LABEL" parent="CHECKBOX_LABEL"
+        align="Left|VCenter"
+        margins="1,0,0,0"
+	textColor="#C0C0C0"
+        >
+        <state state_enabled="false" textColor="#808080"/>
+        <state state_focused="true" textColor="#FFFF00"/>
+        <state state_enabled="true" state_hovered="true" textColor="#FF0000"/>
+    </style>
+    <style id="TEXT"
+        margins="0,0,1,0"
+        padding="1,0,1,0"
+        align="Left|VCenter"
+        >
+        <state state_enabled="false" textColor="#A0000000"/>
+    </style>
+    <style id="MULTILINE_TEXT"
+        margins="0,0,0,0"
+        padding="0,0,0,0"
+        align="Left|VCenter"
+        maxLines = "0"
+        >
+        <state state_enabled="false" textColor="#A0000000"/>
+    </style>
+    <style id="HSPACER"
+        layoutWidth="FILL_PARENT"
+        layoutWeight="100"
+        minWidth="1"
+        />
+    <style id="VSPACER"
+        layoutHeight="FILL_PARENT"
+        layoutWeight="100"
+        minHeight="1"
+        />
+    <style id="BUTTON_NOMARGINS"
+        backgroundImageId="btn_background"
+        align="Center"
+        />
+
+    <style id="SCROLLBAR"
+        align="Center"
+        backgroundImageId="{'░' 0x808000 stretch}"
+        />
+    <style id="SCROLLBAR_BUTTON"
+        backgroundImageId="{' ' bc 0x808000 stretch}"
+        align="Center"
+        >
+        <state state_pressed="true" backgroundImageId="{' ' bc 0xFFFF00 stretch}"/>
+    </style>
+    <style id="SCROLLBAR_BUTTON_TRANSPARENT"
+        backgroundImageId="{'░' 0x808000 stretch}"
+        align="Center"
+        />
+    <style id="PAGE_SCROLL"
+        backgroundImageId="@null"
+        >
+    </style>
+    <style id="TAB_UP_DARK"
+        layoutWidth="FILL_PARENT"
+        backgroundColor="#000000"
+        >
+    </style>
+    <style id="TAB_UP_BUTTON_DARK"
+        backgroundColor="#000000"
+        padding="1,0,1,0"
+        >
+        <state state_selected="true" backgroundColor="#000080"/>
+    </style>
+    <style id="TAB_UP_BUTTON_DARK_TEXT"
+        textColor="#808080"
+        align="Center"
+        padding="1,0,1,0"
+        >
+        <state state_selected="true" textColor="#FFFFFF"/>
+        <state state_hovered="true" textColor="#808000"/>
+    </style>
+
+    <style id="TAB_DOWN_DARK" parent="TAB_UP_DARK"
+        >
+    </style>
+    <style id="TAB_DOWN_BUTTON_DARK" parent="TAB_UP_BUTTON_DARK"
+        padding="1,0,1,0"
+        />
+
+    <style id="TAB_UP"
+        layoutWidth="FILL_PARENT"
+        margins="2,0,2,0"
+        >
+    </style>
+    <style id="TAB_UP_BUTTON_TEXT"
+        textColor="#808080"
+        align="Center"
+        margins="1,0,1,0"
+        >
+        <state state_selected="true" textColor="#FFFFFF"/>
+        <state state_hovered="true" textColor="#808000"/>
+    </style>
+
+    <style id="TAB_UP_BUTTON"
+        backgroundColor="#000000"
+        >
+        <state state_selected="true" backgroundColor="#000080"/>
+    </style>
+    <style id="TAB_HOST"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        backgroundColor="#000000"
+        />
+    <style id="TAB_WIDGET"
+        backgroundColor="#000000"
+        />
+
+    <style id="MAIN_MENU"
+        layoutWidth="FILL_PARENT"
+        backgroundImageId="{' ' bc 0x808080 stretch}"
+	layoutWeight="0"
+	textColor="#000000"
+        />
+    <style id="MAIN_MENU_ITEM"
+        padding="0,0,0,0"
+        backgroundImageId="{' ' bc 0x808080 stretch}"
+        textFlags="Parent"
+        >
+        <state state_selected="true" backgroundImageId="{' ' bc 0xFFFFFF stretch}"/>
+    </style>
+    <style id="MENU_ITEM"
+	textColor="#000000"
+        backgroundImageId="{' ' bc 0x808080 stretch}"
+        padding="0,0,0,0"
+        >
+        <state state_selected="true" backgroundImageId="{' ' bc 0xFFFFFF stretch}"/>
+    </style>
+    <style id="MENU_ICON"
+        margins="0,0,0,0"
+        align="Left|VCenter"
+        >
+        <state state_enabled="false" alpha="160"/>
+    </style>
+    <style id="MENU_LABEL"
+	textColor="#000000"
+        margins="1,0,1,0"
+        align="Left|VCenter"
+        textFlags="UnderlineHotKeys"
+        >
+        <state state_enabled="false" textColor="#C0C0C0"/>
+    </style>
+    <style id="MAIN_MENU_LABEL"
+	textColor="#000000"
+        margins="1,0,1,0"
+        align="Left|VCenter"
+        textFlags="Parent"
+        >
+        <state state_enabled="false" textColor="#C0C0C0"/>
+    </style>
+    <style id="MENU_ACCEL"
+        margins="1,0,1,0"
+        align="Left|VCenter"
+        textColor="#000000"
+        >
+        <state state_enabled="false" textColor="#C0C0C0"/>
+    </style>
+    <style id="TRANSPARENT_BUTTON_BACKGROUND"
+        backgroundImageId="btn_background_transparent"
+        padding="0,0,0,0"
+        />
+    <style id="POPUP_MENU"
+        backgroundImageId="{'╔═╗' '║ ║' '╚═╝' bc 0x808080 tc 0xC0C0C0 ninepatch 1 1 1 1 padding 1 1 1 1}"
+        />
+    <style id="LIST_ITEM"
+        >
+        <state state_pressed="true" backgroundImageId="{'░' 0x808000 stretch}" textColor="#000000"/>
+        <state state_selected="true" state_focused="true" backgroundImageId="{' ' bc 0xFFFF00 stretch}" textColor="#000000"/>
+        <state state_selected="true" backgroundImageId="{' ' bc 0x808080 stretch}" textColor="#000000"/>
+        <state state_hovered="true" textColor="#800080"/>
+    </style>
+
+    <style id="COMBO_BOX"
+        backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808080 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"
+        padding="0,0,0,0"
+        margins="0,0,0,0"
+        minWidth="8"
+        >
+        <state state_focused="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"/>
+    </style>
+    <style id="COMBO_BOX_BODY"
+        padding="0,0,0,0"
+        minWidth="8"
+        align="Left|VCenter"
+	focusRectColors="#000"
+        />
+    <style id="COMBO_BOX_BUTTON"
+        padding="0,0,0,0"
+        backgroundImageId="btn_background_transparent"
+        align="Center"
+        />
+
+    <style id="EDIT_LINE"
+        backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808080 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"
+        padding="1,1,1,1"
+        margins="0,0,0,0"
+        minWidth="5"
+        >
+        <state state_focused="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"/>
+    </style>
+    <style id="EDIT_BOX"
+        backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808080 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"
+        padding="1,1,0,0"
+        margins="0,0,0,0"
+        minWidth="8"
+        minHeight="3"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        >
+        <state state_focused="true" state_window_focused="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"/>
+        <state state_focused="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"/>
+        <state state_enabled="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808080 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"/>
+    </style>
+    <style id="LIST_BOX"
+        backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808080 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"
+        padding="1,1,1,1"
+        margins="0,0,0,0"
+        minWidth="8"
+        minHeight="3"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        >
+        <state state_focused="true" state_window_focused="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"/>
+        <state state_focused="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"/>
+        <state state_enabled="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808080 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"/>
+    </style>
+    <style id="EDIT_BOX_NO_FRAME"
+        fontFace="Menlo,Consolas,DejaVuSansMono,Lucida Sans Typewriter,Courier New,Lucida Console"
+        backgroundColor="#000000"
+        padding="0,0,0,0"
+        margins="0,0,0,0"
+        minWidth="8"
+        minHeight="3"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        />
+    <style id="STRING_GRID"
+        padding="0,0,0,0"
+        margins="0,0,0,0"
+        minWidth="20"
+        minHeight="10"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808080 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"
+        >
+        <state state_focused="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 0 0}"/>
+    </style>
+    <style id="STATUS_LINE"
+        backgroundColor="#D0D0D0"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="WRAP_CONTENT"
+        padding="0,0,0,0"
+	layoutWeight="0"
+        />
+    <style id="DOCK_HOST"
+        backgroundColor="#000000"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        padding="0,0,0,0"
+        />
+    <style id="DOCK_HOST_BODY"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        padding="0,0,0,0"
+        margins="0,0,0,0"
+        />
+    <style id="FLOATING_WINDOW"
+        backgroundImageId="{'╔═╗' '║ ║' '╚═╝' bc 0x000000 tc 0xC0C0C0 ninepatch 1 1 1 1 padding 2 1 2 1}"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        padding="0,0,0,0"
+        margins="0,0,0,0"
+        />
+    <style id="DOCK_WINDOW"
+        backgroundColor="#000000"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        padding="0,0,0,0"
+        margins="0,0,0,0"
+        />
+    <style id="DOCK_WINDOW_CAPTION"
+        backgroundColor="#008000"
+        textColor="#000080"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="WRAP_CONTENT"
+        padding="0,0,0,0"
+        >
+        <state state_window_focused="true" backgroundColor="#0000FF"/>
+    </style>
+    <style id="DOCK_WINDOW_CAPTION_LABEL"
+        textColor="#FFFFFF"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="WRAP_CONTENT"
+        padding="0,0,0,0"
+        align="Left|VCenter"
+        >
+        <state state_window_focused="true" textColor="#FFFFFF"/>
+    </style>
+    <style id="DOCK_WINDOW_BODY"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="FILL_PARENT"
+        padding="0,0,0,0"
+        backgroundColor="#000000"
+        />
+
+    <style id="TOOLBAR_HOST"
+        backgroundColor="#000000"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="WRAP_CONTENT"
+        padding="0,0,0,0"
+        />
+    <style id="TOOLTIP"
+        backgroundColor="#808080"
+        layoutWidth="WRAP_CONTENT"
+        layoutHeight="WRAP_CONTENT"
+        margins="0,0,0,0"
+        padding="1,0,1,0"
+	textColor="#00FFFF"
+        />
+    <style id="TOOLBAR"
+        backgroundColor="#000000"
+        layoutWidth="WRAP_CONTENT"
+        layoutHeight="WRAP_CONTENT"
+        margins="1,0,1,0"
+        minHeight="3"
+        />
+    <style id="TOOLBAR_BUTTON"
+        align="Center"
+        margins="0,0,0,0"
+        padding="0,0,0,0"
+        backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808000 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"
+        >
+        <state state_enabled="false" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808080 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"/>
+        <state state_enabled="true" state_hover="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"/>
+    </style>
+    <style id="TOOLBAR_CONTROL"
+        align="Center"
+        margins="0,0,0,0"
+        padding="0,0,0,0"
+        backgroundImageId="{'┌─┐' '│ │' '└─┘' 0x808000 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"
+        >
+        <state state_enabled="true" state_hover="true" backgroundImageId="{'┌─┐' '│ │' '└─┘' 0xFFFF00 bc 0xFFFFFFFF ninepatch 1 1 1 1 padding 1 1 1 1}"/>
+    </style>
+    <style id="TOOLBAR_SEPARATOR"
+        backgroundImageId="{' ' 0x808080 padding 1 1 1 1}"
+        align="Center"
+        />
+
+    <style id="TREE_ITEM"
+        minWidth="8"
+        minHeight="1"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="WRAP_CONTENT"
+        >
+    </style>
+    <style id="TREE_ITEM_EXPAND_ICON"
+        align="Left|VCenter"
+        textFlags="Parent"
+    />
+    <style id="TREE_ITEM_BODY"
+        align="Left|VCenter"
+        textFlags="Parent"
+        >
+        <state state_selected="true" backgroundColor="#808080"/>
+    </style>
+    <style id="TREE_ITEM_ICON"
+        align="Left|VCenter"
+        textFlags="Parent"
+    />
+    <style id="TREE_ITEM_LABEL"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="WRAP_CONTENT"
+        align="Left|VCenter"
+        textFlags="Parent"
+        >
+        <state state_selected="true" textColor="#FFFFFF"/>
+        <state state_hover="true" textColor="#FFFF00"/>
+        <state state_default="true" fontWeight="bold"/>
+    </style>
+
+    <style id="SETTINGS_TREE"
+        margins="0,0,0,0"
+        backgroundColor="#FFFFFF"
+        layoutWeight="3"
+    />
+
+    <style id="SETTINGS_PAGES"
+        margins="0,1,1,1"
+        padding="1,1,1,1"
+        layoutWidth="FILL_PARENT"
+        layoutWeight="5"
+    />
+
+    <style id="SETTINGS_PAGE_TITLE"
+        margins="1,1,1,2"
+	layoutWeight="0"
+        layoutWidth="FILL_PARENT"
+    />
+
+    <style id="RESIZER_VERTICAL"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="WRAP_CONTENT"
+	minHeight="1"
+	maxHeight="1"
+	backgroundColor="#FFFFFFFF">
+        <state state_focused="true" backgroundColor="#FF00FF"/>
+        <state state_pressed="true" backgroundColor="#FFFF00"/>
+        <state state_selected="true" backgroundColor="#808080"/>
+        <state state_hovered="true" backgroundColor="#808000"/>
+    </style>
+    <style id="RESIZER_HORIZONTAL"
+        layoutWidth="FILL_PARENT"
+        layoutHeight="WRAP_CONTENT"
+	minWidth="1"
+	maxWidth="1"
+	backgroundColor="#FFFFFFFF">
+        <state state_focused="true" backgroundColor="#FF00FF"/>
+        <state state_pressed="true" backgroundColor="#FFFF00"/>
+        <state state_selected="true" backgroundColor="#808080"/>
+        <state state_hovered="true" backgroundColor="#808000"/>
+    </style>
+
+
+    <style id="GROUP_BOX"
+        textColor="#C0C0C0"
+	minHeight="3"
+        >
+        <drawable id="group_box_frame_up_left" value="{'┌─' 0x808080 bc 0xFFFFFFFF ninepatch 1 0 0 0 padding 0 0 0 0}"/>
+        <drawable id="group_box_frame_up_right" value="{'─┐' 0x808080 bc 0xFFFFFFFF ninepatch 0 0 1 0 padding 0 0 0 0}"/>
+        <drawable id="group_box_frame_bottom" value="{'│ │' '└─┘' 0x808080 0xFFFFFFFF 0x808080 0x808080 0x808080 0x808080 bc 0xFFFFFFFF ninepatch 1 0 1 1 padding 1 0 1 1}"/>
+    </style>
+
+    <style id="GROUP_BOX_CAPTION"
+        align="Left|VCenter"
+	textColor="#C0C0C0"
+        padding="0,0,0,0">
+    </style>
+
+    <style id="PROGRESS_BAR"
+        minWidth="10"
+        minHeight="1"
+        backgroundImageId="{'░' 0x808000 stretch}"
+        >
+        <drawable id="progress_bar_gauge" value="{' ' 0x808080 bc 0x0000FF stretch}"/>
+        <drawable id="progress_bar_gauge_animation" value="@none"/>
+        <drawable id="progress_bar_indeterminate" value="{'░' 0x808000 stretch}"/>
+        <drawable id="progress_bar_indeterminate_animation" value="@none"/>
+    </style>
+
+    <style id="SLIDER"
+	        backgroundImageId="{'═' 0x808080 stretch}"
+        	align="Center">
+        <drawable id="scrollbar_indicator_vertical" value="{'■' #000000 bc #FFFF00}"/>
+        <drawable id="scrollbar_indicator_horizontal" value="{'■' #000000 bc #FFFF00}"/>
+    </style>
+</theme>
+
