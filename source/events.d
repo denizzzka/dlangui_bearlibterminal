@@ -14,34 +14,13 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
     with(BT)
     switch(event)
     {
-        case keycode.left:
-            dKeyCode = KeyCode.LEFT;
-            break;
-
-        case keycode.right:
-            dKeyCode = KeyCode.RIGHT;
-            break;
-
-        case keycode.down:
-            dKeyCode = KeyCode.DOWN;
-            break;
-
-        case keycode.up:
-            dKeyCode = KeyCode.UP;
-            break;
-
-        case keycode.enter:
-            dKeyCode = KeyCode.RETURN;
-            break;
-
-        case keycode.tab:
-            dKeyCode = KeyCode.TAB;
-            break;
-
-        case keycode.space:
-            dKeyCode = KeyCode.SPACE;
-            break;
-
+        case keycode.left: dKeyCode = KeyCode.LEFT; break;
+        case keycode.right: dKeyCode = KeyCode.RIGHT; break;
+        case keycode.down: dKeyCode = KeyCode.DOWN; break;
+        case keycode.up: dKeyCode = KeyCode.UP; break;
+        case keycode.enter: dKeyCode = KeyCode.RETURN; break;
+        case keycode.tab: dKeyCode = KeyCode.TAB; break;
+        case keycode.space: dKeyCode = KeyCode.SPACE; break;
         case keycode.escape: dKeyCode = KeyCode.ESCAPE; break;
         case keycode.backspace: dKeyCode = KeyCode.BACK; break;
         case keycode.minus: dKeyCode = KeyCode.KEY_SUBTRACT; break;
@@ -55,10 +34,7 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
         case keycode.comma: dKeyCode = KeyCode.KEY_COMMA; break;
         case keycode.period: dKeyCode = KeyCode.KEY_PERIOD; break;
         case keycode.slash: dKeyCode = KeyCode.SLASH; break;
-
-        case keycode.K_0:
-            dKeyCode = KeyCode.KEY_0;
-            break;
+        case keycode.K_0: dKeyCode = KeyCode.KEY_0; break;
 
         default:
             int keytable_diff;
