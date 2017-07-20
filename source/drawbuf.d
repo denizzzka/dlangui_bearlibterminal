@@ -16,8 +16,6 @@ class BearLibDrawBuf : DrawBuf
 
     void printText(int x, int y, uint argb_color, string text)
     {
-        Log.d("set color="~argb_color.to!string);
-
         BT.color(argb_color.toColor);
         BT.print(x, y, text);
     }
