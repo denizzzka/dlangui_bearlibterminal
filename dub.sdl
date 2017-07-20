@@ -1,4 +1,4 @@
-name "dlangui_external_example"
+name "dlangui_bearlibterminal"
 description "Bearlib terminal as external platform for dlangui"
 authors "denizzz"
 copyright "Copyright © 2017, denizzz"
