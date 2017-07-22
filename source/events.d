@@ -44,7 +44,7 @@ KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
         case keycode.KP_multiply: dk = KeyCode.MUL; break;
         case keycode.KP_plus: dk = KeyCode.ADD; break;
         case keycode.KP_minus: dk = KeyCode.SUB; break;
-        case keycode.kp_period: dk = KeyCode.DECIMAL; break;
+        case keycode.KP_period: dk = KeyCode.DECIMAL; break;
         case keycode.KP_enter: dk = KeyCode.RETURN; break;
         case keycode.K_delete: dk = KeyCode.DEL; break;
         case keycode.K_0: dk = KeyCode.KEY_0; break;
