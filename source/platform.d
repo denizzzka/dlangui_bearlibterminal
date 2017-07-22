@@ -45,7 +45,7 @@ class BearLibPlatform : Platform
             {
                 auto event = BT.read();
 
-                Log.d("MessageLoop event = "~event.to!string);
+                Log.v("MessageLoop event = "~event.to!string);
 
                 with(BT)
                 switch(event)
