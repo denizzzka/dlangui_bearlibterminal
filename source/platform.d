@@ -80,6 +80,8 @@ class BearLibPlatform : Platform
 
                         break;
                 }
+
+                window.invalidate();
             }
         }
         while(true);

@@ -106,5 +106,6 @@ class BearLibWindow : Window
 
     void invalidate()
     {
+        show();
     }
 }
