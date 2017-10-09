@@ -102,4 +102,9 @@ class BearLibPlatform : Platform
         if(window !is null)
             window.requestLayout();
     }
+
+    bool hasClipboardText(bool mouseBuffer)
+    {
+        assert(false, "Isn't implemented");
+    }
 }
