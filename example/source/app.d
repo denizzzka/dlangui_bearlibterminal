@@ -29,6 +29,17 @@ extern (C) int UIAppMain(string[] args)
 
     window.mainWidget.addChild = btn2;
 
+    {
+        VerticalLayout col2 = new VerticalLayout();
+        GroupBox gb31 = new GroupBox("switches", "SwitchButton"d, Orientation.Vertical);
+        gb31.addChild(new SwitchButton("sb1"));
+        gb31.addChild(new SwitchButton("sb2").checked(true));
+        gb31.addChild(new SwitchButton("sb3").enabled(false));
+        gb31.addChild(new SwitchButton("sb4").enabled(false).checked(true));
+        col2.addChild(gb31);
+        window.mainWidget.addChild(col2);
+    }
+
     //~ window.mainWidget.measure(SIZE_UNSPECIFIED, SIZE_UNSPECIFIED);
 
     //~ window.requestLayout();
