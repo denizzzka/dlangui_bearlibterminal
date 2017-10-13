@@ -15,3 +15,10 @@ subPackage {
     targetType "executable"
     dependency "dlangui_bearlibterminal" version="*"
 }
+
+subPackage {
+    name "example1"
+    sourcePaths "example1/src"
+    targetType "executable"
+    dependency "dlangui_bearlibterminal" version="*"
+}
