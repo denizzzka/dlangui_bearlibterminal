@@ -74,6 +74,11 @@ class BearLibDrawBuf : DrawBuf
     {
         assert(false, __FUNCTION__~" isn't implemented");
     }
+
+    void fillGradientRect(Rect rc, uint color1, uint color2, uint color3, uint color4)
+    {
+        fillRect(rc, color1);
+    }
 }
 
 package:
