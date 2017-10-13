@@ -3,7 +3,7 @@ module dlangui_bearlibterminal.drawbuf;
 import BearLibTerminal: BT = terminal;
 import dlangui;
 
-class BearLibDrawBuf : DrawBuf
+class BearLibDrawBuf : ConsoleDrawBufAbstract
 {
     private int _width;
     private int _height;
@@ -24,6 +24,14 @@ class BearLibDrawBuf : DrawBuf
 
     @property int width() { return _width; }
     @property int height() { return _height; }
+
+    void drawChar(int x, int y, dchar ch, uint color, uint bgcolor)
+    {
+        BT.color(color.toColor);
+        BT.bkcolor(bgcolor.toColor);
+
+        BT.put(x, y, ch);
+    }
 
     void resize(int _width, int _height)
     {
