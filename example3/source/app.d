@@ -12,7 +12,7 @@ extern (C) int UIAppMain(string[] args)
 
     window.mainWidget = vl;
 
-    vl.addChild = new GroupBox("groupbox", "GroupBox1");
+    vl.addChild = new GroupBox("groupbox", "Hello world"d);
 
     window.show();
 
