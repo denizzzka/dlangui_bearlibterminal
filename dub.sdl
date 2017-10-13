@@ -8,6 +8,7 @@ dependency "dlangui" version="~>0.9.162"
 subConfiguration "dlangui" "external"
 versions "EmbedStandardResources" "NO_FREETYPE"
 targetType "library"
+stringImportPaths "cfg"
 
 subPackage {
     name "example"

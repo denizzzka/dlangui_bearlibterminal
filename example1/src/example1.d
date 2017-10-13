@@ -195,7 +195,7 @@ debug(SDLSettings) {
 /// entry point for dlangui based application
 extern (C) int UIAppMain(string[] args) {
     // select translation file - for english language
-    //~ Platform.instance.uiLanguage = "en";
+    Platform.instance.uiLanguage = "en";
     // load theme from file "theme_default.xml"
     //~ Platform.instance.uiTheme = "theme_default";
     //Platform.instance.uiTheme = "theme_dark";
