@@ -41,7 +41,7 @@ class BearLibPlatform : Platform
     {
         do
         {
-            if(BT.has_input)
+            //~ if(BT.has_input)
             {
                 auto event = BT.read();
 

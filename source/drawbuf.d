@@ -3,7 +3,7 @@ module dlangui_bearlibterminal.drawbuf;
 import BearLibTerminal: BT = terminal;
 import dlangui;
 
-class BearLibDrawBuf : ConsoleDrawBufAbstract
+class BearLibDrawBuf : ConsoleDrawBuf
 {
     private int _width;
     private int _height;
