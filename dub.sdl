@@ -6,19 +6,12 @@ license "Boost"
 dependency "bearlibterminal" version="~>1.5.4"
 dependency "dlangui" version="~>0.9.162"
 subConfiguration "dlangui" "external"
-stringImportPaths "views" "views/res"
 versions "EmbedStandardResources" "NO_FREETYPE"
+targetType "library"
 
 subPackage {
     name "example"
     sourcePaths "example/source"
-    targetType "executable"
-    dependency "dlangui_bearlibterminal" version="*"
-}
-
-subPackage {
-    name "example1"
-    sourcePaths "example1/src"
     targetType "executable"
     dependency "dlangui_bearlibterminal" version="*"
 }
