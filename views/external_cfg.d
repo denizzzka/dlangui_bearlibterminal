@@ -1,0 +1,1 @@
+enum WIDGET_STYLE_CONSOLE = true;
