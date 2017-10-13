@@ -25,6 +25,18 @@ class BearLibDrawBuf : ConsoleDrawBufAbstract
     @property int width() { return _width; }
     @property int height() { return _height; }
 
+   /// reserved for hardware-accelerated drawing - begins drawing batch
+    void beforeDrawing()
+    {
+        assert(false, __FUNCTION__~" isn't implemented");
+    }
+
+    /// reserved for hardware-accelerated drawing - ends drawing batch
+    void afterDrawing()
+    {
+        assert(false, __FUNCTION__~" isn't implemented");
+    }
+
     void drawChar(int x, int y, dchar ch, uint color, uint bgcolor)
     {
         BT.color(color.toColor);
@@ -85,8 +97,11 @@ class BearLibDrawBuf : ConsoleDrawBufAbstract
 
     void fillGradientRect(Rect rc, uint color1, uint color2, uint color3, uint color4)
     {
-        fillRect(rc, color1);
+        //~ fillRect(rc, color1);
+        assert(false, __FUNCTION__~" isn't implemented");
     }
+
+    @property int bpp() { return 4; }
 }
 
 package:
