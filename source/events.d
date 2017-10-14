@@ -5,7 +5,7 @@ import dlangui;
 
 KeyEvent convertKeyEvent(BT.keycode event, bool keyReleased)
 {
-    if(!(event >= 0x04 && event <= 0x72)) // This is not keyboard event? (key_released is ignored)
+    if(!(event >= 0x04 && event <= 0x72)) // This is not keyboard event?
         return null;
 
     /// DlangUI keycode
