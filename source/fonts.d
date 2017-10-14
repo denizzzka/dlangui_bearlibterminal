@@ -75,23 +75,29 @@ class BearLibFont : Font
 
     import BearLibTerminal: BT = terminal;
 
-    void drawText(DrawBuf drawBuf, int x, int y, const dchar[] text, uint argb_color, int tabSize, int tabOffset, uint textFlags)
+    void drawText(DrawBuf drawBuf, int x, int y, in dchar[] text, uint argb_color, int tabSize, int tabOffset, uint textFlags)
     {
         import dlangui_bearlibterminal.drawbuf: BearLibDrawBuf;
 
-        bool underline = (textFlags & TextFlag.Underline) != 0;
+        const bool defaultUnderline = (textFlags & TextFlag.Underline) != 0;
+        bool underline = defaultUnderline;
 
-        auto buf = cast(BearLibDrawBuf) drawBuf;
+        foreach(dchar c; text)
+        {
+            if(isHotkeySymbol(c, textFlags))
+            {
+                underline = true;
+            }
+            else
+            {
+                auto buf = cast(BearLibDrawBuf) drawBuf;
 
-        buf.printTextWithEffects(x, y, text.to!string, false, argb_color);
+                buf.drawCharWithEffects(x, y, c, underline, argb_color);
 
-        //~ foreach(const c; text)
-        //~ {
-            //~ if(isHotkeySymbol(c, textFlags))
-                //~ underline = true;
-            //~ else
-                //~ buf.printTextWithEffects(x, y, [c].to!string, false, argb_color);
-        //~ }
+                underline = defaultUnderline;
+                x++;
+            }
+        }
     }
 
     int measureText(const dchar[] text, ref int[] widths, int maxWidth, int tabSize, int tabOffset, uint textFlags)

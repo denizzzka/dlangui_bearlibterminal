@@ -14,18 +14,13 @@ class BearLibDrawBuf : ConsoleDrawBuf
         _height = h;
     }
 
-    void printTextWithEffects(int x, int y, string text, bool underscore, uint argb_color)
+    void drawCharWithEffects(int x, int y, dchar ch, bool underscore, uint color)
     {
-        BT.color(argb_color.toColor);
-        BT.print(x, y, text);
+        BT.color(color.toColor);
+        BT.put(x, y, ch);
 
         if(underscore)
-        {
-            auto finish = x + text.length;
-
-            for(; x < finish; x++)
-                BT.put(x, y, '_');
-        }
+            BT.put(x, y, '_');
     }
 
     override:
