@@ -20,7 +20,11 @@ class BearLibDrawBuf : ConsoleDrawBuf
         BT.put(x, y, ch);
 
         if(underscore)
+        {
+            BT.layer(1);
             BT.put(x, y, '_');
+            BT.layer(0);
+        }
     }
 
     override:
