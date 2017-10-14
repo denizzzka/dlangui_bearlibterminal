@@ -28,8 +28,15 @@ extern(C) int DLANGUImain(string[] args)
     int result = -1;
     try
     {
-        result = UIAppMain(args);
-        Log.i("UIAppMain returned ", result);
+        version(unittest)
+        {
+            result = 0;
+        }
+        else
+        {
+            result = UIAppMain(args);
+            Log.i("UIAppMain returned ", result);
+        }
     }
     catch (Exception e)
     {

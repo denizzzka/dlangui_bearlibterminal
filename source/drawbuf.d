@@ -109,6 +109,10 @@ class BearLibDrawBuf : ConsoleDrawBuf
     }
 
     @property int bpp() { return 4; }
+
+    void clear() {
+        resetClipping();
+    }
 }
 
 package:
