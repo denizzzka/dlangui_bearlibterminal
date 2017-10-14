@@ -194,6 +194,7 @@ debug(SDLSettings) {
 
 /// entry point for dlangui based application
 extern (C) int UIAppMain(string[] args) {
+    embeddedResourceList.addResources(embedResourcesFromList!("resources.list")());
     // select translation file - for english language
     Platform.instance.uiLanguage = "en";
     // load theme from file "theme_default.xml"
