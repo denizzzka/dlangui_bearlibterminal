@@ -1,5 +1,5 @@
 # dlangui_bearlibterminal
-Bearlib terminal external platform for dlangui
+External platform for dlangui based on Bearlib terminal
 
 ![Demo](screen01.png)
 

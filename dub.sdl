@@ -1,5 +1,5 @@
 name "dlangui_bearlibterminal"
-description "Bearlib terminal as external platform for dlangui"
+description "External platform for dlangui based on Bearlib terminal"
 authors "denizzz"
 copyright "Copyright © 2017, denizzz"
 license "Boost"
