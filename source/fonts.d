@@ -45,6 +45,15 @@ class BearLibFont : Font
         _glyph.glyph = [0];
     }
 
+    private static bool isHotkeySymbol(in dchar c, uint textFlags)
+    {
+        return c == '&' && (textFlags & (
+                TextFlag.UnderlineHotKeys |
+                TextFlag.HotKeys |
+                TextFlag.UnderlineHotKeysWhenAltPressed
+            ));
+    }
+
     override:
 
     int size() @property { return 1; }
@@ -70,14 +79,30 @@ class BearLibFont : Font
     {
         import dlangui_bearlibterminal.drawbuf: BearLibDrawBuf;
 
+        bool underline = (textFlags & TextFlag.Underline) != 0;
+
         auto buf = cast(BearLibDrawBuf) drawBuf;
 
-        buf.printText(x, y, argb_color, text.to!string);
+        buf.printTextWithEffects(x, y, text.to!string, false, argb_color);
+
+        //~ foreach(const c; text)
+        //~ {
+            //~ if(isHotkeySymbol(c, textFlags))
+                //~ underline = true;
+            //~ else
+                //~ buf.printTextWithEffects(x, y, [c].to!string, false, argb_color);
+        //~ }
     }
 
     int measureText(const dchar[] text, ref int[] widths, int maxWidth, int tabSize, int tabOffset, uint textFlags)
     {
-        int len = BT.measure(text.to!string).width;
+        int len;
+
+        foreach(const c; text)
+        {
+            if(!isHotkeySymbol(c, textFlags))
+                len++;
+        }
 
         if(len > maxWidth)
             len = maxWidth;
@@ -93,6 +118,7 @@ class BearLibFont : Font
         return len;
     }
 
+    // FIXME
     Point measureMultilineText(const dchar[] text, int maxLines, int maxWidth, int tabSize, int tabOffset, uint textFlags)
     {
         auto dim = BT.measure(text.to!string);
