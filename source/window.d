@@ -82,8 +82,6 @@ class BearLibWindow : Window
 
             if(mainWidget !is null)
             {
-                Log.d("_mainWidget available");
-
                 redraw();
             }
         }
