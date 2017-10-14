@@ -75,6 +75,7 @@ class BearLibFont : Font
 
     import BearLibTerminal: BT = terminal;
 
+    //TODO: use tabSize and tabOffset for printing
     void drawText(DrawBuf drawBuf, int x, int y, in dchar[] text, uint argb_color, int tabSize, int tabOffset, uint textFlags)
     {
         import dlangui_bearlibterminal.drawbuf: BearLibDrawBuf;
