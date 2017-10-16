@@ -57,7 +57,7 @@ class BearLibPlatform : Platform
 
                     case keycode.resized:
                         window.updateDlanguiWindowSize();
-                        window.show();
+                        window.invalidate();
                         break;
 
                     default:
@@ -78,10 +78,12 @@ class BearLibPlatform : Platform
                                 window.dispatchMouseEvent(me);
                         }
 
+                        window.invalidate();
+
                         break;
                 }
 
-                window.invalidate();
+                window.redrawIfNeed();
             }
         }
         while(true);

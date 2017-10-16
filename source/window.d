@@ -6,6 +6,8 @@ class BearLibWindow : Window
 {
     import BearLibTerminal: BT = terminal;
 
+    private bool needRedraw = true;
+
     this(dstring caption)
     {
         windowOrContentResizeMode = WindowOrContentResizeMode.shrinkWidgets;
@@ -44,19 +46,20 @@ class BearLibWindow : Window
         }
     }
 
-    private void redraw()
+    void redrawIfNeed()
     {
         import dlangui_bearlibterminal.drawbuf;
 
-        BT.clear();
+        if(needRedraw == true)
+        {
+            BT.clear();
+            BearLibDrawBuf buf = new BearLibDrawBuf(width, height);
+            onDraw(buf);
+            BT.refresh();
+            destroy(buf);
 
-        BearLibDrawBuf buf = new BearLibDrawBuf(width, height);
-
-        onDraw(buf);
-
-        BT.refresh();
-
-        destroy(buf);
+            needRedraw = false;
+        }
     }
 
     override:
@@ -66,25 +69,15 @@ class BearLibWindow : Window
         BT.close();
     }
 
+    /// Displays window at the first time
     void show()
     {
-        static bool firstCall = true;
+        import dlangui.widgets.widget;
 
-        if(firstCall)
-        {
-            firstCall = false;
+        assert(needRedraw);
 
-            invalidate();
-        }
-
-        {
-            import dlangui.widgets.widget;
-
-            if(mainWidget !is null)
-            {
-                redraw();
-            }
-        }
+        if(mainWidget !is null)
+            redrawIfNeed();
     }
 
     dstring windowCaption() @property
@@ -104,6 +97,6 @@ class BearLibWindow : Window
 
     void invalidate()
     {
-        show();
+        needRedraw = true;
     }
 }
