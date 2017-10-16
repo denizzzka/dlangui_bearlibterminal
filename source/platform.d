@@ -90,7 +90,8 @@ class BearLibPlatform : Platform
                     break;
             }
 
-            window.redrawIfNeed();
+            if(BT.has_input == 0)
+                window.redrawIfNeed();
         }
         while(true);
     }
