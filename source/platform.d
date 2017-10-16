@@ -10,6 +10,31 @@ class BearLibPlatform : Platform
 
     private BearLibWindow window;
 
+    // In BT ecosystem keycode contains any type of event
+    private bool dispatchBTEventToDlangui(in BT.keycode event)
+    {
+        import core.bitop: btr;
+        import dlangui_bearlibterminal.events;
+
+        const bool keyReleased = btr(cast(size_t*) &event, 8) != 0;
+
+        bool eventCatched;
+
+        {
+            auto ke = convertKeyEvent(event, keyReleased);
+            if(ke !is null)
+                eventCatched = window.dispatchKeyEvent(ke);
+        }
+
+        {
+            auto me = convertMouseEvent(event, keyReleased);
+            if(me !is null)
+                eventCatched = window.dispatchMouseEvent(me);
+        }
+
+        return eventCatched;
+    }
+
     override:
 
     BearLibWindow createWindow(dstring windowCaption, Window parent, uint flags, uint width, uint height)
@@ -41,50 +66,31 @@ class BearLibPlatform : Platform
     {
         do
         {
-            //~ if(BT.has_input)
+            auto event = BT.read();
+
+            Log.v("MessageLoop event = "~event.to!string);
+
+            with(BT)
+            switch(event)
             {
-                auto event = BT.read();
+                case keycode.close:
+                    destroy(window);
+                    Log.d("return 0");
+                    return 0;
 
-                Log.v("MessageLoop event = "~event.to!string);
+                case keycode.resized:
+                    window.updateDlanguiWindowSize();
+                    window.invalidate();
+                    break;
 
-                with(BT)
-                switch(event)
-                {
-                    case keycode.close:
-                        destroy(window);
-                        Log.d("return 0");
-                        return 0;
-
-                    case keycode.resized:
-                        window.updateDlanguiWindowSize();
-                        window.invalidate();
-                        break;
-
-                    default:
-                        import core.bitop: btr;
-                        import dlangui_bearlibterminal.events;
-
-                        const bool keyReleased = btr(cast(size_t*) &event, 8) != 0;
-
-                        {
-                            auto ke = convertKeyEvent(event, keyReleased);
-                            if(ke !is null)
-                                window.dispatchKeyEvent(ke);
-                        }
-
-                        {
-                            auto me = convertMouseEvent(event, keyReleased);
-                            if(me !is null)
-                                window.dispatchMouseEvent(me);
-                        }
-
+                default:
+                    if(dispatchBTEventToDlangui(event))
                         window.invalidate();
 
-                        break;
-                }
-
-                window.redrawIfNeed();
+                    break;
             }
+
+            window.redrawIfNeed();
         }
         while(true);
     }
