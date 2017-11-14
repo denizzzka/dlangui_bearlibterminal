@@ -80,7 +80,7 @@ class BearLibWindow : Window
             redrawIfNeed();
     }
 
-    dstring windowCaption() @property
+    dstring windowCaption() const @property
     {
         return BT.get("window.title", "default_value").to!dstring;
     }
